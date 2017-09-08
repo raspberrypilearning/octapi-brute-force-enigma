@@ -1,15 +1,15 @@
-title: octapi-brute-force-enigma
+title: "OctaPi: Brute force Enigma"
 hero_image: images/banner.png
-description: octapi-brute-force-enigma description
-original_url: https://codeclubprojects.org/en-GB/scratch/rock-band
+description: Find out how to launch a brute force crypt attack on Enigma
+original_url:
 theme: red # possible values: blue, green, navy, orange, red, turquoise, violet, yellow
 duration: 1 # possible values: 1, 2 or 3
 listed: false
 ingredient: false
 copyedit: false
 curriculum: creator, design-0, programming-0, phys-comp-0, manufacture-0, community-0
-interests: "animals, jokes/pranks, space, photography, music/sound, physical computing, games, robots, geography"
-technologies: "electronics, sense-hat, physical computing, html/css, scratch, python"
+interests: ""
+technologies: "python"
 site_areas:
 steps:
   - title: Introduction

@@ -1,19 +1,16 @@
 ## Introduction
 
-Add project description here. What will learners be making?
+Make and then break Enigma encoded messages using your Raspberry Pi 3 or [OctaPi Raspberry Pi cluster](http://projects.raspberrypi.org/en/rpi-python-build-an-octapi).
 
 ### What you will make
 
-Add something here to showcase here, for example:
+You will install [Py-enigma by Brian Neal](http://py-enigmareadthedocs.org/) and use it to create encrypted messages (secret messages only you and those you trust can read). You will then develop Python code to do a partial brute force crypt attack on the Enigma messages so that you recover the machine's rotor settings.  
 
-<div class="scratch-preview">
-  <iframe allowtransparency="true" width="485" height="402" src="https://scratch.mit.edu/projects/embed/160619869/?autostart=false" frameborder="0"></iframe>
-</div>
+ ![A GCHQ owned Enigma machine captured at the end of WWII](images/7X5A0933.jpg)
 
-Add instructions here. These should explain either how the finished project will work, or explain how to interact with the content above.
 
 ### What you will learn
 
 This project covers elements from the following strands of the [Raspberry Pi Digital Making Curriculum](http://rpf.io/curriculum):
 
-+ [Add curriculum strand/level description.](https://www.raspberrypi.org/curriculum/strand/level)
++ [Apply higher-order programming techniques to solve real-world problems](https://curriculum.raspberrypi.org/programming/maker/)
