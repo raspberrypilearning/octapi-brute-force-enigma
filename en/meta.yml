@@ -14,4 +14,9 @@ site_areas:
 steps:
   - title: Introduction
   - title: What you will need
-  - title: Step title
+  - title: What is Enigma and how did it work?
+  - title: Check py-enigma
+  - title: Encrypt a message
+  - title: Enigma in use during WWII
+  - title: Standalone crypt attack
+  - title: Crypt attack using OctaPi

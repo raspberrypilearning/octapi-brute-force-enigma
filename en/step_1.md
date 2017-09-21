@@ -1,6 +1,6 @@
 ## Introduction
 
-Make and then break Enigma encoded messages using your Raspberry Pi 3 or [OctaPi Raspberry Pi cluster](http://projects.raspberrypi.org/en/rpi-python-build-an-octapi).
+Make and then break Enigma encoded messages using your Raspberry Pi 3 or [OctaPi Raspberry Pi cluster](http://projects.raspberrypi.org/en/projects/rpi-python-build-an-octapi).
 
 ### What you will make
 
