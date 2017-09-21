@@ -1,6 +1,10 @@
 ## Decrypt a message
 
-Imagine you are an Enigma operator and you've just received the message: "YJPYITREDSYUPIU". Let's write some code to use Py-enigma to decrypt it.
+Imagine you are an Enigma operator and you've just received this message:
+
+![Encrypted message](images/encrypted-message.png)
+
+Let's write some code using Py-enigma to simulate using an Enigma machine to decrypt the message.
 
 + Open IDLE and create a new file. Save it as `decrypt.py`
 
@@ -19,6 +23,7 @@ You consult your Enigma settings sheet and find out that the machine that encryp
 + In your Python file, set up an Enigma machine object. Use the same settings as on your settings sheet, exactly as they appear:
 
 ```python
+# Set up the Enigma machine
 machine = EnigmaMachine.from_key_sheet(
    rotors='',
    reflector='B',
@@ -29,21 +34,50 @@ machine = EnigmaMachine.from_key_sheet(
 + Add some code to set the initial position of the Enigma machine rotors to U, Y and T, to match the sending machine.
 
 ```python
+# Set the initial position of the Enigma rotors
 machine.set_display('UYT')
 ```
 
-We were sent "PWE" as the encrypted key for this message. It was encrypted before sending to prevent an eavesdropper from being able to read it. However, our Enigma machine can recover the actual message key used by decrypting "PWE" using the rotor start position we just set: U, Y and T. We then reset the Enigma machine's rotor starting positions with the decrypted message key.
+You were sent "PWE" by the other operator as the encrypted key for this message. It was encrypted before sending to prevent an eavesdropper from being able to read it.
+
+You first need to use your Enigma machine to recover the _actual_ message key by decrypting "PWE" using the settings sheet's rotor start position: U, Y and T.
+
++ Add the following code and run your program to display the decrypted key
 
 ```python
+# Decrpyt the text 'PWE' and store it as msg_key
 msg_key = machine.process_text('PWE')
+
+# Show the contents of msg_key
 machine.set_display(msg_key)
 ```
 
-We are now ready to decrypt the message. If the message text we received was "YJPYITREDSYUPIU", we can decrypt it using the following:
++ Go back to your code and reset the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
 
-    ciphertext = 'YJPYITREDSYUPIU'
-    plaintext = machine.process_text(ciphertext)
+You are now ready to decrypt the message.
 
-    print(plaintext)
++ Remove the code you used to decrypt the key, and instead write some code to decrypt the cipher text.
 
-If all is well, you should see the Python 3 script exit without error with "THISXISWORKING".
+--- hints ---
+--- hint ---
+This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text and then **display** the result.
+--- /hint ---
+--- hint ---
+Here is how your code should look:
+
+```python
+ciphertext = 'YJPYITREDSYUPIU'
+plaintext = machine.process_text(ciphertext)
+
+print(plaintext)
+```
+--- /hint ---
+--- /hints ---
+
+--- collapse ---
+---
+title: What is the decrypted message?
+---
+If all is well, you should see the script exit without any errors, and the decrypted message "THISXISWORKING".
+
+--- /collapse ---
