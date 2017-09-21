@@ -47,15 +47,24 @@ You first need to use your Enigma machine to recover the _actual_ message key by
 ```python
 # Decrpyt the text 'PWE' and store it as msg_key
 msg_key = machine.process_text('PWE')
-
+print(msg_key)
 ```
 
-+ Add some code to set the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
++ Add some code at the bottom of the program to set the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
+
+--- hints ---
+--- hint ---
+Look at how you originally set the rotor positions to UYT and see if you can use this code to set the rotor positions to the new setting.
+--- /hint ---
+--- hint ---
+Here is how your code should look:
 
 ```python
 # Set the new start position of the Enigma rotors
 machine.set_display(msg_key)
 ```
+--- /hint ---
+--- /hints ---
 
 You are now ready to decrypt the message.
 

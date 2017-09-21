@@ -19,5 +19,5 @@ Type this command into the terminal to install the Py-enigma module:
 
 ```bash
 sudo pip3 install py-enigma
-sudo pip3 --upgrade py-enigma
+sudo pip3 install --upgrade py-enigma
 ```
