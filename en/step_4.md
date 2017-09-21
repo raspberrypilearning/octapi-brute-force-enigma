@@ -48,19 +48,22 @@ You first need to use your Enigma machine to recover the _actual_ message key by
 # Decrpyt the text 'PWE' and store it as msg_key
 msg_key = machine.process_text('PWE')
 
-# Show the contents of msg_key
+```
+
++ Add some code to set the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
+
+```python
+# Set the new start position of the Enigma rotors
 machine.set_display(msg_key)
 ```
 
-+ Go back to your code and reset the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
-
 You are now ready to decrypt the message.
 
-+ Remove the code you used to decrypt the key, and instead write some code to decrypt the cipher text.
++ Write some code to decrypt the cipher text.
 
 --- hints ---
 --- hint ---
-This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text and then **display** the result.
+This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text and then **print** the result.
 --- /hint ---
 --- hint ---
 Here is how your code should look:
