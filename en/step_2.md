@@ -2,20 +2,22 @@
 
 ### Hardware
 
-+ Raspberry Pi _or_
++ Raspberry Pi _and/or_
 + OctaPi
 
 ### Software
 
-+ Py-enigma
+You will need the [latest version of Raspbian](https://www.raspberrypi.org/downloads/) which already includes the following software packages:
 
-To install Brian Neal's implementation of Enigma in Python 3, run the following commands (assuming your Raspberry Pi is connected to the Internet).
+- Python 3
 
-    sudo pip3 install py-enigma
-    sudo pip3 --upgrade py-enigma
+You will also need to install the **Py-enigma** module.
 
-This sequence of commands installs a Python 3 module and also a pyenigma.py command line Python application ready to use.
+[[[rpi-install-software]]]
 
-### Additional Resources
+Type this command into the terminal to install the Py-enigma module:
 
-+ List additional resources, or delete section.
+```bash
+sudo pip3 install py-enigma
+sudo pip3 --upgrade py-enigma
+```

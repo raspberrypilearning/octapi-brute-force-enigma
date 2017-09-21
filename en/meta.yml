@@ -14,7 +14,7 @@ site_areas:
 steps:
   - title: Introduction
   - title: What you will need
-  - title: What is Enigma and how did it work?
+  - title: What was Enigma and how did it work?
   - title: Check py-enigma
   - title: Encrypt a message
   - title: Enigma in use during WWII
