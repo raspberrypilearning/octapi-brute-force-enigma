@@ -1,25 +1,47 @@
 ## Encrypt a message
 
-Lets use the Py-enigma command line tool to create a message using the settings from the sheet.
+Suppose you need to send a message back using your Enigma machine. You look up today's settings in your settings sheet:
 
-- Rotors in use (and order placed in machine): IV I V
-- Rotor slip ring settings: 20, 5, 10
-- Plug board: SX KU QP VN JG TC LA WM OB ZF
-- Reflector: B
-- Rotor start position: FNZ
+![Encrypt settings](images/encrypt-settings.png)
 
-If your message is "RASPBERRYPI", you need to run Py-enigma as follows.
++ Create a new Python file and save it as `encrypt.py`
 
-    pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B -s FNZ -t "RASPBERRYPI"
++ Inside your file, import the EnigmaMachine class and set up the machine with the settings shown on the settings sheet. Like last time, use reflector B.
 
-This should return with, "NHBEEFAMZCJ", as the encrypted text.
++ Write another line of code to set the rotor start positions to the setting from the sheet.
 
-Our test code is [here](source/enigma_test.py)
++ Write some code to process the `plaintext` "RASPBERRYPI" and display the resulting `ciphertext`.
 
-Try other settings from the sheet to see how the text changes.
+**What do you notice about the processes of encrypting and decrypting text?**
 
-### Question
-Do any of the characters get encrypted as themselves (ie does "A" get encrypted as "A", "B" as "B", etc...)
+--- collapse ---
+---
+title: Answer
+---
+They are exactly the same! The code you wrote in this section is identical to tht which you wrote to decrypt the message.
 
-### Answer
+The resulting ciphertext should be "NHBEEFAMZCJ".
+--- /collapse ---
+
+You can also run pyenigma from the command line if you wish. Typing this command into the terminal produces the same result as the program above.
+
+```bash
+pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B -s FNZ -t "RASPBERRYPI"
+```
+
+**Do any of the characters get encrypted as themselves (ie does "A" get encrypted as "A", "B" as "B", etc...)**
+
+--- collapse ---
+---
+title: Answer
+---
 No. In fact this is a weakness of the Enigma system because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
+
+--- /collapse ---
+
+
+### Challenge
+
+Try encrypting text using different settings from a real Enigma settings sheet to see how the text changes. 
+
+![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)

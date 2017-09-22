@@ -90,6 +90,6 @@ print(plaintext)
 ---
 title: What is the decrypted message?
 ---
-If all is well, you should see the script exit without any errors, and the decrypted message "THISXISWORKING".
+If all is well, you should see the script exit without any errors, and the decrypted message "THISXISXWORKING".
 
 --- /collapse ---
