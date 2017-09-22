@@ -1,50 +1,52 @@
-## Crypt attack on Enigma messages using OctaPi
+## Crypt attack using OctaPi
 
-### Installing Py-enigma on OctaPi
-Before you begin, you will need to install  [Py-enigma by Brian Neal](http://py-enigmareadthedocs.org/) on both your client machine and all the servers in your OctaPi cluster.
+This part of the resource requires an [OctaPi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi).
 
-Start with the client machine
+Before you begin, you will need to install Py-Enigma on your client machine and all the servers in your OctaPi cluster.
 
-1. Boot up the client and connected to the Internet. This will mean disconnecting from your OctaPi router and connecting to your Wi-Fi for Internet access.
+--- collapse ---
+---
+title: Install Py-Enigma on the OctaPi client and servers
+---
 
-1. Once on-line, open a terminal window
++ Boot up the client and connect it to the Internet. This will mean disconnecting from your OctaPi router and connecting to your Wi-Fi network for internet access.
 
-    ![Open a terminal](images/terminal.png)
++ Open a terminal window
 
-1. To install Brian Neal's Py-enigma on the OctaPi client, run the following commands.
+![Open a terminal](images/terminal.png)
 
-    sudo pip3 install py-enigma
-    sudo pip3 --upgrade py-enigma
++ Type the following commands into the terminal
 
-This sequence of commands installs a Python 3 module and also a pyenigma.py command line Python application ready to use.
+```bash
+sudo pip3 install py-enigma
+sudo pip3 --upgrade py-enigma
+```
 
-1. Disconnect the OctaPi client from the Internet and re-connect to your OctaPi Wi-Fi network
++ Disconnect the OctaPi client from the internet and re-connect it to your dedicated OctaPi router.
 
-1. We need to remove any previous Wi-Fi information to avoid confusion.
++ Remove any entries in `wpa_supplicant` that are for Wi-Fi networks other than OctaPi to avoid the client connecting to the wrong network.
 
-    In a terminal window, type the following command to edit the `wpa_suplicant.conf` file:
+In a terminal window, type the following command to edit the `wpa_supplicant.conf` file:
 
-    ```bash
-    sudo nano \etc\wpa_suplicant\wpa_suplicant.conf
-    ```
+```bash
+sudo nano \etc\wpa_suplicant\wpa_suplicant.conf
+```
 
-    Remove any entries in `wpa_suplicant` that are for Wi-Fi networks other than OctaPi, then press `Ctrl` + `o` to save and `Ctrl` + `x` to exit.
++ Press `Ctrl` + `o` to save and `Ctrl` + `x` to exit the text editor.
 
-    **Important:** If alternative Wi-Fi networks are not removed, your client may log onto the wrong network.
+Next, repeat this process for each of the servers.
 
-Next, do the same for each of the servers.
++ Select one server, then connect a keyboard, screen and mouse to it so that you can administer it directly from a terminal window.
 
-1. Select one server, then connect and keyboard screen and mouse to it so that you can administer it directly from a terminal winow
++ Repeat all the steps needed to install Py-enigma that you followed for the client.
 
-1. Repeat all the steps needed to install Py-enigma that you followed for the client.
++ Remember to remove any entries in `wpa_supplicant` that are for Wi-Fi networks other than OctaPi
 
-1. Remember to remove any entries in `wpa_suplicant` that are for Wi-Fi networks other than OctaPi
++ Shut down the server and either repeat the installation the same way for the rest of the servers in your cluster, or replicate the SD card
 
-1. Shutdown the server and either repeat the installation the same way for the rest of the servers in you cluster, or replicate the microSD card.
+--- /collapse ---
 
-## Running Py-enigma on OctaPi
-
-To do an exhaust search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using [Dispy](http://dispy.sourceforge.net/index.html). The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time (if we are using the simple 'canonical' form of the code).
+To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using [Dispy](http://dispy.sourceforge.net/index.html). The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time (if we are using the simple 'canonical' form of the code).
 
 The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
 

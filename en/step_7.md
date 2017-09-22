@@ -4,7 +4,11 @@ During World War II cryptographers at Bletchley Park were working hard to try to
 
 A brute force attack is simply an exhaustive search over all possible machine settings to try and find which one was used. For the time being, we will ignore the plug board setting (and assume that is known).
 
-We will use a crib text with our cipher text, which is a guess at what the cipher text might be. This may seem like a cheat, but is actually exploiting a weakness of the Enigma system as used during WWII. Some of the text in messages was predictable, especially at the start. Weather report messages were a good source of cribs as they often contained the word "WETTER" which is the German word for "weather".
+Here is the message that was intercepted
+
+![Intercepted message](images/intercepted-message.png)
+
+We will use a crib text with our cipher text, which is a guess at what the cipher text might be. This may seem like a cheat, but is actually exploiting a weakness of the Enigma system as used during WWII. Some of the text in messages was predictable, especially at the start. For example weather report messages were a good source of cribs as they often contained the word "WETTER" which is the German word for "weather".
 
 We will use this crib to help us launch the brute force attack:
 
@@ -131,6 +135,16 @@ for rotor_setting in rotors:
 --- /hints ---
 
 + Save and run your program. It will take quite a long time to run, but you should be able to see the results for each rotor choice as it executes.
+
++ Once the rotor choice and start position have been found, use the decrypt program you wrote earlier to decrypt the hidden message, using the rotor choice and start positions found with the brute force attack.
+
+--- collapse ---
+---
+title: Answer
+---
+The secret message reads `"THISXISXWORKING OCTAPIXISXAWESOME"`
+
+--- /collapse ---
 
 We did not code the rotor slip ring settings. This setting allows the letters on each of the rotors to be shifted round (A to B, A to C, A to D, etc...). To deal with the rotor ring setting, we would need to modify and run the `find_rotor_start()` function repeatedly for every rotor slip ring setting.
 
