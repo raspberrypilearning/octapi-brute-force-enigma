@@ -42,14 +42,14 @@ rotors = [ "I II III", "I II IV", "I II V", "I III II",
 "IV III V", "IV V I", "IV V II", "IV V III",
 "V I II", "V I III", "V I IV", "V II I",
 "V II III", "V II IV", "V III I", "V III II",
-"V III IV", "V IV I", "V IV II", "V IV III"	]
+"V III IV", "V IV I", "V IV II", "V IV III" ]
 ```
 
 Our strategy will be to select each set of rotor choices in turn from the above list and check to see whether decrypting the cipher text with this combination of rotors obtains the crib text.
 
 However, it is not as simple as just testing every single possible choice of rotors. Inside our function we will also need to search over all possible rotor start positions for the specified rotor combination as well.
 
-For the time being we will assume the ring settings "1 1 1" and the plugboard settings "AV BS CG DL FU HZ IN KM OW RX" and we will discuss adding these later.
+For the time being we will assume the ring settings "1 1 1" and the plugboard settings "AV BS CG DL FU HZ IN KM OW RX" and we will discuss adding these later. The code breakers of Bletchley Park would not have had this luxury!
 
 + Create a function called `find_rotor_start()` which takes three arguments - the rotor choice, the cipher text and the crib text.
 
