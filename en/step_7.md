@@ -24,21 +24,21 @@ We need to represent the selection of three out of five rotor wheels in our Pyth
 + Copy this list of all possible rotor choices into your file
 
 ```python
-rotors = [ 	"I II III", "I II IV", "I II V", "I III II",
+rotors = [ "I II III", "I II IV", "I II V", "I III II",
 "I III IV", "I III V", "I IV II", "I IV III",
 "I IV V", "I V II", "I V III", "I V IV",
 "II I III", "II I IV", "II I V", "II III I",
 "II III IV", "II III V", "II IV I", "II IV III",
 "II IV V", "II V I", "II V III", "II V IV",
-"III I II",	"III I IV",	"III I V", "III II I",
+"III I II", "III I IV", "III I V", "III II I",
 "III II IV", "III II V", "III IV I", "III IV II",
 "III IV V", "IV I II", "IV I III", "IV I V",
 "IV II I", "IV II III", "IV I V", "IV II I",
-"IV II III", "IV II V",	"IV III I",	"IV III II",
-"IV III V",	"IV V I", "IV V II", "IV V III",
+"IV II III", "IV II V", "IV III I", "IV III II",
+"IV III V", "IV V I", "IV V II", "IV V III",
 "V I II", "V I III", "V I IV", "V II I",
 "V II III", "V II IV", "V III I", "V III II",
-"V III IV",	"V IV I", "V IV II", "V IV III"	]
+"V III IV", "V IV I", "V IV II", "V IV III"	]
 ```
 
 Our strategy will be to select each set of rotor choices in turn from the above list and check to see whether decrypting the cipher text with this combination of rotors obtains the crib text.
@@ -84,8 +84,8 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
     machine = EnigmaMachine.from_key_sheet(
        rotors=rotor_choice,
        reflector='B',
-       ring_settings='1 1 1',					# no ring setting
-       plugboard_settings='AV BS CG DL FU HZ IN KM OW RX')		# plugboard known
+       ring_settings='1 1 1',		
+       plugboard_settings='AV BS CG DL FU HZ IN KM OW RX')		
 
     # Do a search over all possible rotor starting positions
     for i in range(len(alphabet)):          # Search for rotor 1 start position
@@ -102,18 +102,18 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
                 plaintext = machine.process_text(ciphertext)
 
                 # Check if decrypted version is the same as the crib text
-                if (plaintext == cribtext):
-                    return( rotor_choice, start_pos )
+                if plaintext == cribtext:
+                    return rotor_choice, start_pos
 
     # If we didn't manage to successfully decrypt the message
-    return( rotor_choice, "Cannot find settings" )
+    return rotor_choice, "Cannot find settings"
 ```
 --- /hint ---
 --- /hints ---
 
 Most of the time our function will fail to match the cipher and crib text because the rotor choice will be wrong. On one occasion (we hope!) the cipher and crib texts will match because we have found the machine setting used.
 
-+ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list.
++ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results.
 
 --- hints ---
 --- hint ---
@@ -125,13 +125,16 @@ Here is how your code might look:
 ```python
 for rotor_setting in rotors:
     rotor_choice, start_pos = find_rotor_start( rotor_setting, ciphertext, cribtext )
+    print(rotor_choice + " " + start_pos )
 ```
 --- /hint ---
 --- /hints ---
 
++ Save and run your program. It will take quite a long time to run, but you should be able to see the results for each rotor choice as it executes.
+
 We did not code the rotor slip ring settings. This setting allows the letters on each of the rotors to be shifted round (A to B, A to C, A to D, etc...). To deal with the rotor ring setting, we would need to modify and run the `find_rotor_start()` function repeatedly for every rotor slip ring setting.
 
-**How much longer will it take to run our program if we code for a search over slip ring settings as well?**
+**How much longer will it take to run the program if we code for a search over all possible slip ring settings as well?**
 
 --- collapse ---
 ---
