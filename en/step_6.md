@@ -4,7 +4,7 @@ Enigma messages were normally sent in Morse code over shortwave radio. This mean
 
 Let's have a look at how messages were sent so that we can create a message authentically using Py-Enigma then develop Python code to crypt attack it.
 
-A number of different radio procedures were used by the different parts of the German military, but they all looked a bit like this (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma encrypted transmission.
+A number of different radio procedures were used by the different parts of the German military, but they all worked a bit like this (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma encrypted transmission.
 
 ### Step 1: Select the rotors and choose a three character message key
 The operator would find the line on the settings sheet that corresponds to the current day of the month. Which rotors to use and in what order is the first thing on the settings sheet. The rotor start position for the current 6 hour period is on the end of the line. The operator chooses a three letter message key which should be unique to every message. This key could not be sent in the clear (for fairly obvious reasons), so it was encrypted for transmission.
