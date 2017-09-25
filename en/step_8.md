@@ -56,17 +56,17 @@ The demand on the OctaPi client machine for memory will be quite large, so we wi
 
 + Inside the function, set the ring choice in the Enigma machine object to be the ring choice that was passed into the function as a parameter.
 
-+ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` so that three values in total are returned from the function. The `ring_choice` should be the second value returned.
++ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` as the second value returned, so that three values in total are returned from the function.
 
-+ In the main part of your program (where your loop originally was in the standalone version), instead create a cluster object on the OctaPi network like this. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
++ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text and the slip ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
+
++ Create a cluster object on the OctaPi network, like this. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
 
 ```python
 cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
 jobs = []
 id = 1    
 ```
-
-+ Add some code to allow the user to input the cipher text, the crib text and the slip ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
 +  Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop we used in the standalone brute force attack.
 
@@ -112,44 +112,35 @@ cluster.print_status()
 cluster.close()
 ```
 
++ Save and run your code using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'.
 
-### Advanced coding challenge
-Use the stanadlone code and these code fragments to assemble a working Python 3 app for OctaPi that distributes the 'find_rotor_start()' function acrross your OctaPi servers. Run it on a selection of crib texts and Enigma cipher text you have created with Py-enigma.
+Here is an example of the code running using arguments passed from the command line:
 
-Our code for doing this is [here](source/enigma_bf_canonical.py).
+![Running enigma_bf_canonical](images/enigma-canonical-qjf.png)
 
-  ![Running pyenigma to create messages](images/enigma-pyenigma-encoding.png)
+**If you run the OctaPi code with different ring settings, do you sometimes get more than one result? Why is this?**
 
-  ![Running enigma_bf_canonical](images/enigma-canonical-qjf.png)
+--- collapse ---
+---
+title: Answer
+---
 
-### Question
-If you run the OctaPi code with different ring settings, did you sometimes get more than one result? Why is this?
-
-### Answer
-You should have sometimes found multiple valid machine settings for the same rotor selections but with different rotor slip settings and rotor start positions. For example you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact there are multiple valid machine settings because the rotor slip ring creates multiple equivalent crypt solutions. This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was percieved to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions creating a discontinuity every 26, 26x26 and 26x26x26 chacaters; meaning that an attacker would have to keep starting again. With our Raspberry Pi based crypt attack using a simple brute force exhaust search over full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to reach a valid solution.
+You sometimes find multiple valid machine settings for the same rotor selections but with different ring settings and rotor start positions. For example you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact there are multiple valid machine settings because the rotor slip ring creates multiple equivalent crypt solutions. This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions creating a discontinuity every 26, 26x26 and 26x26x26 characters; meaning that an attacker would have to keep starting again. With our Raspberry Pi based crypt attack using a simple brute force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to reach a valid solution.
 
 Here's an example (compare with the screenshot above).
 
   ![Running enigma_bf_canonical](images/enigma-canonical-qjg.png)
 
-We could have saved a lot of time coding the slip ring search had we thought of this beforehand.
+We could have saved a lot of time coding the slip ring search if we had known this beforehand.
 
-### Question
-What is the minimum length of crib text needed to obtain the correct machine setting?
+--- /collapse ---
 
-### Answer
-If you run your code multiple time with less and less crib and cipher text characters, you should find that as few as four characters of crib text is enough to obtain the correct machine setting (there could be a handful of incorrect solutions as well). With less than four characters, there is soo much ambiguity that you will have trouble finding the correct solution amongst all the incorrect solutions.
+**What is the minimum length of crib text needed to obtain the correct machine setting?**
 
-### Very advanced coding challenge
-If you have got this far, you could try coding the search over plug board settings. Before you start, try estimating if this is going to be achievable - even with an OctaPi cluster?
+--- collapse ---
+---
+title: Answer
+---
+If you run your code multiple time with fewer and fewer crib and cipher text characters, you should find that as few as four characters of crib text is enough to obtain the correct machine setting (as well as a handful of incorrect solutions). With fewer than four characters, there is so much ambiguity that you will have trouble finding the correct solution amongst all the incorrect solutions.
 
-
-
-
-We will run the program using command line arguments in order to set the cipher text, crib text and rotor slip ring settings at run time. If our Python code is called 'enigma_bf_canonical.py', the command line will look like:
-
-    sudo python3 enigma_bf_canonical.py 'FKFPQZYVON' 'CHELTENHAM' '1 1 1'
-
- Where
-     'FKFQQZYVON' is cipher text produced by an Enigma machine, or the pyenigma.py utility
-     'CHELTENHAM' is text that was encrypted, we are using it as a crib
+--- /collapse ---
