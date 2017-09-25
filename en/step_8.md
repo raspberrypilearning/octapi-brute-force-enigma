@@ -46,55 +46,71 @@ Next, repeat this process for each of the servers.
 
 --- /collapse ---
 
-To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using [Dispy](http://dispy.sourceforge.net/index.html). The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time (if we are using the simple 'canonical' form of the code).
+To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using Dispy, which you installed when you built the OctaPi. The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
 
-The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
+The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time.
 
-We will run the program using command line arguments in order to set the cipher text, crib text and rotor slip ring settings at run time. If our Python code is called 'enigma_bf_canonical.py', the command line will look like:
++ Start with the code you wrote for the standalone attack, but save a copy of the file as `bruteforce_octapi.py`. Remove the loop in the main part of the program but keep all of the variables and the function `find_rotor_start()`.
 
-    sudo python3 enigma_bf_canonical.py 'FKFPQZYVON' 'CHELTENHAM' '1 1 1'
++ Alter the `find_rotor_start()` function so that it now takes an additional parameter - the `ring_choice`. This will be a string containing 3 numbers separated by spaces, for example "1 1 1".
 
- Where
-     'FKFQQZYVON' is cipher text produced by an Enigma machine, or the pyenigma.py utility
-     'CHELTENHAM' is text that was encrrypted, we are using it as a crib
++ Inside the function, set the ring choice in the Enigma machine object to be the ring choice that was passed into the function as a parameter.
 
-Starting with the code we wrote for a standalone processor, we need to create a cluster object on our OctaPi network and fill it with 'find_rotor_start()' jobs. This code goes in the main loop in the 'enigma_bf_canonical.py' script.
++ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` so that three values in total are returned from the function. The `ring_choice` should be the second value returned.
 
-        cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
-        jobs = []
-        id = 1    # job id
++ In the main part of your program (where your loop originally was in the standalone version), instead create a cluster object on the OctaPi network like this. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
 
-        # submit the jobs for this ring choice
-        for rotor_choice in rotor:
-            job = cluster.submit( rotor_choice, ring_choice, ciphertext, cribtext )
-            job.id = id # associate an ID to the job
-            jobs.append(job)
-            id += 1   # next job
+```python
+cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
+jobs = []
+id = 1    
+```
 
-In this code snippet we create the cluster object, then create a job for each call of 'find_rotor_start()'. The parameters are passed in the 'cluster.submit()' function call. The 'rotor' array is the same as we had before.
++ Add some code to allow the user to input the cipher text, the crib text and the slip ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
-Next we need to wait for the jobs to complete before collecting the results returned from the cluster.
++  Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop we used in the standalone brute force attack.
 
-        print( "Waiting..." )
-        cluster.wait()
-        print( "Collecting job results" )
+```python
+# Submit the jobs for this ring choice
+for rotor_choice in rotor:
+    job = cluster.submit( rotor_choice, ring_choice, ciphertext, cribtext )
+    job.id = id # Associate an ID to the job
+    jobs.append(job)
+    id += 1   # Next job
+```
 
-The last step is to sift through the results to see if any of the find_rotor_start() jobs didn't return the string "null", in which case the returned string must havce been a valid rotor start position (three characters).
++ Next we need to wait for the jobs to complete before collecting the results returned from the cluster.
 
-        # collect and check through the jobs for this ring setting
-        found = False
-        for job in jobs:
-            rotor_setting, ring_setting, start_pos = job() # waits for job to finish and returns results
-            if (start_pos != "null"):
-                found = True
-                print(( "Rotors %s, ring %s, message key was %s, using crib %s" % (rotor_setting, ring_setting, start_pos, cribtext) ))
+```python
+print( "Waiting..." )
+cluster.wait()
+print( "Collecting job results" )
+```
 
-Lastly, we can tidy up and exit.
++ The last step is to sift through the results to see if any of the `find_rotor_start()` jobs didn't return the string `"Cannot find settings"`, in which case the returned string must have been a valid rotor start position.
 
-        if (found == False): print( 'Attack unsuccessfull' )
+```python
+# Collect and check through the jobs for this ring setting
+found = False
+for job in jobs:
+    # Wait for job to finish and return results
+    rotor_setting, ring_setting, start_pos = job()
 
-        cluster.print_status()
-        cluster.close()
+    # If a start position was found
+    if (start_pos != "Cannot find settings"):
+        found = True
+        print(( "Rotors %s, ring %s, message key was %s, using crib %s" % (rotor_setting, ring_setting, start_pos, cribtext) ))
+```
+
++ Lastly, we can tidy up and exit.
+
+```python
+if (found == False):
+    print( 'Attack unsuccessful' )
+
+cluster.print_status()
+cluster.close()
+```
 
 
 ### Advanced coding challenge
@@ -126,3 +142,14 @@ If you run your code multiple time with less and less crib and cipher text chara
 
 ### Very advanced coding challenge
 If you have got this far, you could try coding the search over plug board settings. Before you start, try estimating if this is going to be achievable - even with an OctaPi cluster?
+
+
+
+
+We will run the program using command line arguments in order to set the cipher text, crib text and rotor slip ring settings at run time. If our Python code is called 'enigma_bf_canonical.py', the command line will look like:
+
+    sudo python3 enigma_bf_canonical.py 'FKFPQZYVON' 'CHELTENHAM' '1 1 1'
+
+ Where
+     'FKFQQZYVON' is cipher text produced by an Enigma machine, or the pyenigma.py utility
+     'CHELTENHAM' is text that was encrypted, we are using it as a crib
