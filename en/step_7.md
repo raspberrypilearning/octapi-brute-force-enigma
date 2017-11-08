@@ -92,12 +92,12 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
        plugboard_settings='AV BS CG DL FU HZ IN KM OW RX')		
 
     # Do a search over all possible rotor starting positions
-    for i in range(len(alphabet)):          # Search for rotor 1 start position
-        for j in range(len(alphabet)):      # Search for rotor 2 start position
-            for k in range(len(alphabet)):  # Search for rotor 3 start position
+    for rotor1 in alphabet:          # Search for rotor 1 start position
+        for rotor2 in alphabet:      # Search for rotor 2 start position
+            for rotor3 in alphabet:  # Search for rotor 3 start position
 
                 # Generate a possible rotor start position
-                start_pos = alphabet[i] + alphabet[j] + alphabet[k]
+                start_pos = rotor1 + rotor2 + rotor3
 
                 # Set the starting position
                 machine.set_display(start_pos)
@@ -107,6 +107,7 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
 
                 # Check if decrypted version is the same as the crib text
                 if plaintext == cribtext:
+                    print("Valid settings found!")
                     return rotor_choice, start_pos
 
     # If we didn't manage to successfully decrypt the message
