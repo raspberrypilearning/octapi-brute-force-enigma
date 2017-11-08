@@ -52,7 +52,7 @@ The resulting ciphertext should be "NHBEEFAMZCJ".
 You can also run pyenigma from the command line if you wish. Typing this command into the terminal produces the same result as the program above.
 
 ```bash
-pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B -s FNZ -t "RASPBERRYPI"
+pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start FNZ --text "RASPBERRYPI"
 ```
 
 **Do any of the characters ever get encrypted as themselves (ie does "A" get encrypted as "A", "B" as "B", etc...)**

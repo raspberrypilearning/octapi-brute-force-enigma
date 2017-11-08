@@ -21,7 +21,7 @@ We will know if the attack has found the correct rotor choices and starting posi
 
 + Create a new Python file and save it as `bruteforce_standalone.py`
 
-+ Add the strings containing the cipher text and the crib text to your file
++ Add the strings containing the cipher text (YJPYITREDSYUPIUBWMFIUQFFRGMXTRNHU) and the crib text to your file
 
 We need to represent the selection of three out of five rotor wheels in our Python code. We could write code to generate the possibilities, but as there aren't very many, we can manually define them.
 
@@ -136,13 +136,17 @@ for rotor_setting in rotors:
 
 + Save and run your program. It will take quite a long time to run, but you should be able to see the results for each rotor choice as it executes.
 
+If you would like your program to exit once the setting is found, you could add a check to see whether the returned start position was `"Cannot find settings"`. Alternatively you can press <kbd>Ctrl + c</kbd> to stop the program running manually.
+
 + Once the rotor choice and start position have been found, use the decrypt program you wrote earlier to decrypt the hidden message, using the rotor choice and start positions found with the brute force attack.
 
 --- collapse ---
 ---
 title: Answer
 ---
-The secret message reads `"THISXISXWORKING OCTAPIXISXAWESOME"`
+
+The settings were as follows: rotors = II V III / starting position = SCC
+The secret message reads `"THISXISXWORKINGXOCTAPIXISXAWESOME"`
 
 --- /collapse ---
 

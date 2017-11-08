@@ -2,7 +2,7 @@
 
 Enigma messages were normally sent in Morse code over shortwave radio. This means they could easily be intercepted some distance away, so there was heavy reliance on the strength of the encryption technique to keep the messages secret. In the event, it was possible for the messages to be received in Britain and successfully decrypted at Bletchley Park.
 
-Let's have a look at how messages were sent so that we can create a message authentically using Py-Enigma then develop Python code to crypt attack it.
+Let's have a look at how messages were sent so that we can create a message authentically using Py-Enigma then develop Python code to perform a crypt attack to attempt to read it.
 
 A number of different radio procedures were used by the different parts of the German military, but they all worked a bit like this (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma encrypted transmission.
 
