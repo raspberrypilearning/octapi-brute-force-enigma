@@ -20,7 +20,7 @@ You consult your Enigma settings sheet and find out that the machine that encryp
 
 ![Decrypt settings](images/decrypt-settings.png)
 
-+ In your Python file, set up an Enigma machine object. Use the same settings as on your settings sheet, exactly as they appear:
++ In your Python file, set up an Enigma machine object. Use the same settings as on your settings sheet. Each setting should be a string and should be typed exactly as it appears on the settings sheet, for example the rotors would be set as `'II V III'`.
 
 ```python
 # Set up the Enigma machine
