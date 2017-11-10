@@ -119,7 +119,7 @@ cluster.print_status()
 cluster.close()
 ```
 
-+ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'. It will take quite a long time to produce results, so be patient!
++ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'. The program should take around 30 seconds to complete.
 
 Here is an example of the code running using arguments passed from the command line:
 
