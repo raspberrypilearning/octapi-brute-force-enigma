@@ -65,7 +65,7 @@ import dispy
 
 + Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` as the second value returned, so that three values in total are returned from the function.
 
-+ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text and the slip ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
++ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
 + Create a cluster object on the OctaPi network, like this. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
 
@@ -80,7 +80,7 @@ id = 1
 ```python
 # Submit the jobs for this ring choice
 for rotor_choice in rotors:
-    job = cluster.submit( rotor_choice, ring_choice, ciphertext, cribtext )
+    job = cluster.submit( rotor_choice, ciphertext, cribtext, ring_choice )
     job.id = id # Associate an ID to the job
     jobs.append(job)
     id += 1   # Next job
@@ -119,7 +119,7 @@ cluster.print_status()
 cluster.close()
 ```
 
-+ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'.
++ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'. It will take quite a long time to produce results, so be patient!
 
 Here is an example of the code running using arguments passed from the command line:
 
