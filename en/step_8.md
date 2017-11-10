@@ -47,7 +47,11 @@ To do an exhaustive search of all rotor slip ring settings, we will need to run 
 
 The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time.
 
-+ Start with the code you wrote for the standalone attack, but save a copy of the file as `bruteforce_octapi.py`. Remove the loop in the main part of the program but keep all of the variables and the function `find_rotor_start()`.
++ Start with the code you wrote for the standalone attack, but save a copy of the file as `bruteforce_octapi.py`.
+
++ Open the file using Python 3 (IDLE) from the Programming menu.
+
++ Remove the loop in the main part of the program but keep all of the variables and the function `find_rotor_start()`.
 
 + Alter the `find_rotor_start()` function so that it now takes an additional parameter - the `ring_choice`. This will be a string containing 3 numbers separated by spaces, for example "1 1 1".
 
