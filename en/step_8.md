@@ -51,7 +51,13 @@ The demand on the OctaPi client machine for memory will be quite large, so we wi
 
 + Open the file using Python 3 (IDLE) from the Programming menu.
 
-+ Remove the loop in the main part of the program but keep all of the variables and the function `find_rotor_start()`.
++ Remove everything except the rotor permutations and the code for the function `find_rotor_start()`.
+
++ Import dispy at the start of your code
+
+```python
+import dispy
+```
 
 + Alter the `find_rotor_start()` function so that it now takes an additional parameter - the `ring_choice`. This will be a string containing 3 numbers separated by spaces, for example "1 1 1".
 
@@ -73,7 +79,7 @@ id = 1
 
 ```python
 # Submit the jobs for this ring choice
-for rotor_choice in rotor:
+for rotor_choice in rotors:
     job = cluster.submit( rotor_choice, ring_choice, ciphertext, cribtext )
     job.id = id # Associate an ID to the job
     jobs.append(job)
@@ -98,22 +104,22 @@ for job in jobs:
     rotor_setting, ring_setting, start_pos = job()
 
     # If a start position was found
-    if (start_pos != "Cannot find settings"):
+    if start_pos != "Cannot find settings":
         found = True
-        print(( "Rotors %s, ring %s, message key was %s, using crib %s" % (rotor_setting, ring_setting, start_pos, cribtext) ))
+        print( "Rotors %s, ring %s, message key was %s, using crib %s" % (rotor_setting, ring_setting, start_pos, cribtext) )
 ```
 
 + Lastly, we can tidy up and exit.
 
 ```python
-if (found == False):
+if found == False:
     print( 'Attack unsuccessful' )
 
 cluster.print_status()
 cluster.close()
 ```
 
-+ Save and run your code using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'.
++ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'.
 
 Here is an example of the code running using arguments passed from the command line:
 
