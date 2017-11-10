@@ -18,7 +18,7 @@ This project covers elements from the following strands of the [Raspberry Pi Dig
 ### Licence
 
 OctaPi: Brute force Enigma by [GCHQ](https://www.gchq.gov.uk/){:target="_blank"} and the Raspberry Pi Foundation is licensed under a Creative Commons Attribution 4.0 International Licence.
-Based on a work at https://github.com/raspberrypilearning/octapi-calculating-pi
+Based on a work at [https://github.com/raspberrypilearning/octapi-calculating-pi](https://github.com/raspberrypilearning/octapi-calculating-pi){:target="_blank"}
 
 **Code and scripts**
 Copyright: [Crown Copyright](https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/){:target="_blank"}

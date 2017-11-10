@@ -1,6 +1,6 @@
 ## Crypt attack using OctaPi
 
-This part of the resource requires an [OctaPi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi).
+This part of the resource requires an [OctaPi cluster](https://projects.raspberrypi.org/en/projects/build-an-octapi){:target="_blank"}.
 
 Before you begin, you will need to install Py-Enigma on your client machine and all the servers in your OctaPi cluster.
 
@@ -15,32 +15,29 @@ title: Install Py-Enigma on the OctaPi client and servers
 
 ![Open a terminal](images/terminal.png)
 
-+ Type the following commands into the terminal
++ Type the following command into the terminal
 
 ```bash
 sudo pip3 install py-enigma
-sudo pip3 --upgrade py-enigma
 ```
 
 + Disconnect the OctaPi client from the internet and re-connect it to your dedicated OctaPi router.
 
-+ Remove any entries in `wpa_supplicant` that are for Wi-Fi networks other than OctaPi to avoid the client connecting to the wrong network.
-
-In a terminal window, type the following command to edit the `wpa_supplicant.conf` file:
++ Type the following command to edit the `wpa_supplicant.conf` file:
 
 ```bash
-sudo nano \etc\wpa_suplicant\wpa_suplicant.conf
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
+
++ + Remove any entries in `wpa_supplicant` that are for Wi-Fi networks other than OctaPi to avoid the client connecting to the wrong network.
 
 + Press `Ctrl` + `o` to save and `Ctrl` + `x` to exit the text editor.
 
 Next, repeat this process for each of the servers.
 
-+ Select one server, then connect a keyboard, screen and mouse to it so that you can administer it directly from a terminal window.
++ Select one server, then connect a keyboard, screen and mouse to it so that you can administer it directly from a terminal window. Alternatively, place the SD card from each server in turn into a Raspberry Pi with connected peripherals.
 
 + Repeat all the steps needed to install Py-enigma that you followed for the client.
-
-+ Remember to remove any entries in `wpa_supplicant` that are for Wi-Fi networks other than OctaPi
 
 + Shut down the server and either repeat the installation the same way for the rest of the servers in your cluster, or replicate the SD card
 
