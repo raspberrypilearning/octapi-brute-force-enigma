@@ -10,6 +10,10 @@ Suppose you need to send a message back using your Enigma machine. You look up t
 
 + Write another line of code to set the rotor start positions to the setting from the sheet.
 
++ Choose three random letters to use as your message key - as an example we will choose "BFR". Encrypt the message key using the rotor settings from the sheet, then make a note of the result which is the encrypted key you will send with your message.
+
++ Set the rotor start positions to your **unencrypted** message key (in our example, "BFR").
+
 + Write some code to process the `plaintext` "RASPBERRYPI" and display the resulting `ciphertext`.
 
 --- hints ---
@@ -46,13 +50,13 @@ title: Answer
 ---
 They are exactly the same! The code you wrote in this section is identical to the code you wrote to decrypt the message.
 
-The resulting ciphertext should be "NHBEEFAMZCJ".
+The resulting ciphertext should be "GON XXLXYFQNZIK" if you used the message key BFR. You may have chosen a different message key, in which case your result will be different.
 --- /collapse ---
 
 You can also run pyenigma from the command line if you wish. Typing this command into the terminal produces the same result as the program above.
 
 ```bash
-pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start FNZ --text "RASPBERRYPI"
+pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start BFR --text "RASPBERRYPI"
 ```
 
 **Do any of the characters ever get encrypted as themselves (ie does "A" get encrypted as "A", "B" as "B", etc...)**

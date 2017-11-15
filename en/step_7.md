@@ -21,7 +21,7 @@ We will know if the attack has found the correct rotor choices and starting posi
 
 + Create a new Python file and save it as `bruteforce_standalone.py`
 
-+ Add the strings containing the cipher text (YJPYITREDSYUPIUBWMFIUQFFRGMXTRNHU) and the crib text to your file
++ Add the strings containing the cipher text and the crib text to your file
 
 We need to represent the selection of three out of five rotor wheels in our Python code. We could write code to generate the possibilities, but as there aren't very many, we can manually define them.
 
@@ -75,7 +75,7 @@ Set up your Enigma machine object just as we did before. Use reflector B and the
 
 Loop through the alphabet to generate all possible start positions for each rotor. For example, if all rotors begin on A, the first start position to test might be AAA. The second might be AAB, then AAC etc until rotor 3 reaches the end of the alphabet. Increment rotor 2 and reset rotor 3 to A, resulting in ABA, ABB, ABC etc.
 
-For each rotor start position, decrypt the given ciphertext and check whether it is the same as the crib text. If it is, return the rotor choice and the start position.
+For each rotor start position, decrypt the given ciphertext and check whether it is the same as the crib text, printing the resulting plaintext as you go along. If it is, return the rotor choice and the start position.
 --- /hint ---
 --- hint ---
 Here is how your code might look:
@@ -104,6 +104,7 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
 
                 # Attempt to decrypt the plaintext
                 plaintext = machine.process_text(ciphertext)
+                print( plaintext )
 
                 # Check if decrypted version is the same as the crib text
                 if plaintext == cribtext:
@@ -118,7 +119,7 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
 
 Most of the time our function will fail to match the cipher and crib text because the rotor choice will be wrong. On one occasion (we hope!) the cipher and crib texts will match because we have found the machine setting used.
 
-+ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results.
++ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results. If ever a start position is returned that is not "Cannot find settings", break out of the loop - the settings have been found!
 
 --- hints ---
 --- hint ---
@@ -131,13 +132,13 @@ Here is how your code might look:
 for rotor_setting in rotors:
     rotor_choice, start_pos = find_rotor_start( rotor_setting, ciphertext, cribtext )
     print(rotor_choice + " " + start_pos )
+    if start_pos != "Cannot find settings":
+        break
 ```
 --- /hint ---
 --- /hints ---
 
 + Save and run your program. It will take quite a long time to run, but you should be able to see the results for each rotor choice as it executes.
-
-If you would like your program to exit once the setting is found, you could add a check to see whether the returned start position was `"Cannot find settings"`. Alternatively you can press <kbd>Ctrl + c</kbd> to stop the program running manually.
 
 + Once the rotor choice and start position have been found, use the decrypt program you wrote earlier to decrypt the hidden message, using the rotor choice and start positions found with the brute force attack.
 
