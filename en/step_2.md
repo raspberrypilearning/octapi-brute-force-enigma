@@ -2,11 +2,11 @@
 
 ### Hardware
 
-+ Raspberry Pi
++ A Raspberry Pi
 
-_and/or_
+and/or
 
-+ OctaPi
++ An OctaPi
 
 ### Software
 
