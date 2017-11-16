@@ -4,7 +4,7 @@ Make and then break Enigma-encoded messages using your Raspberry Pi or [OctaPi](
 
 ### What you will make
 
-You will install [Py-enigma](http://py-enigma.readthedocs.org/){:target="_blank"} and use it to create encrypted messages (secret messages only you and those you trust can read). You will then develop Python code to do a partial brute force crypt attack on the Enigma messages so that you can recover the machine's rotor settings.  
+You will install [Py-enigma](http://py-enigma.readthedocs.org/){:target="_blank"} and use it to create encrypted messages (secret messages only you and those you trust can read). You will then develop Python code to do a partial brute force crypt attack on the Enigma messages and recover the machine's rotor settings.  
 
 ![A GCHQ owned Enigma machine captured at the end of WWII](images/7X5A0933.jpg)
 
