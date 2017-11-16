@@ -16,7 +16,7 @@ Inside the machine, a number of rotors with 26 contacts (one for each letter fro
 
 ![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
 
-In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. This makes it almost impossible to read the text.
+In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. The reflector has fixed transpositions of letters, ensuring that the current returns back through the machine without it reversing the transposition on the return leg.
 
 ### Selecting rotors
 
@@ -52,4 +52,4 @@ This is an Enigma settings sheet captured at the end of WWII which has been rele
 
 The settings we've highlighted are for the first day of the month, hence the '1' in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A = T), rotor I to 5 (A = E) and rotor V to position 10 (A = J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
 
-There were two reflectors used, B or C. These have fixed transpositions of letters, which ensure that the current returns back through the machine without it reversing the transposition on the return leg. We will assume reflector B has been used.
+On top of that, there were two reflectors, B or C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
