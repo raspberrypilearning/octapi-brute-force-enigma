@@ -4,17 +4,21 @@ Enigma is a cipher machine that was created in the early 20th century for commer
 
 From an electrical point of view, the Enigma machine is simply a battery, a bulb, and a switch circuit. It doesn't have any electronics, so it is an electro-mechanical device. Encryption is achieved by varying the path of an electric current through the wiring of the machine.
 
-### Rotors and reflector
+![Encoding a W as G on Enigma](images/Enigma-wiring.gif)
 
-Inside the machine, a number of rotors with 26 contacts (one for each letter from A to Z) are stacked together to create the current path through the heart of the machine. Each rotor wheel has electrical contacts on both sides and a jumble of wiring between them, so that the letters are transposed from one side to the other. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. This makes it almost impossible to read the text.
+In the diagram above, we show how a character on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response.
 
 ### Plugboard
 
 As if this wasn't enough, a plugboard was added to the original design which allows up to ten pairs of letters to be manually transposed as they go into the rotors and again when they come back out.
 
-![Encoding a W as G on Enigma](images/Enigma-wiring.gif)
+### Rotors and reflector
 
-In the diagram above, we show how a character on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response.
+Inside the machine, a number of rotors with 26 contacts (one for each letter from A to Z) are stacked together to create the current path through the heart of the machine. Each rotor wheel has electrical contacts on both sides and a jumble of wiring between them, so that the letters are transposed from one side to the other.
+
+![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
+
+In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. This makes it almost impossible to read the text.
 
 ### Selecting rotors
 
@@ -25,10 +29,6 @@ When using the Enigma machine, three rotors are selected from five available one
 It is also possible to slip round the letter assignments on the side of the rotor wheel so that A = B, or A = C, etc. Changing the point at which the rotors advance makes the encryption sequence discontinuous.
 
 Combining three rotors from a set of five, the rotor settings with 26 positions, and the plugboard with ten pairs of letters connected, the Enigma machine used by WWII military had 158962555217826360000 (nearly 159 quintillion) different settings.
-
-![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
-
-In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine.
 
 The encryption relied on both the sending and receiving Enigma machines being set the same. To do this, a settings sheet was used at both communicating stations. The sheet specified:
 - Which rotors (of those available) should be selected, and in what order they should be inserted into the machine
