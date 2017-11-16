@@ -43,31 +43,31 @@ Next, repeat the follwoing process for each of the servers.
 
 --- /collapse ---
 
-To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using Dispy, which you installed when you built the OctaPi. The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
+To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using `Dispy`, which you installed when you built the OctaPi. The OctaPi code using `Dispy` is very similar to the code we created for a standalone processor.
 
 The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time.
 
 + Start with the code you wrote for the standalone attack, but save a copy of the file as `bruteforce_octapi.py`.
 
-+ Open the file using Python 3 (IDLE) from the Programming menu.
++ Open the file using Python 3 (IDLE) from the **Programming** menu.
 
 + Remove everything except the rotor permutations and the code for the function `find_rotor_start()`.
 
-+ Import dispy at the start of your code
++ Import `dispy` at the start of your code.
 
 ```python
 import dispy
 ```
 
-+ Alter the `find_rotor_start()` function so that it now takes an additional parameter - the `ring_choice`. This will be a string containing 3 numbers separated by spaces, for example "1 1 1".
++ Alter the `find_rotor_start()` function so that it now takes an additional parameter — the `ring_choice`. This will be a **string** containing thre numbers separated by spaces, for example '1 1 1'.
 
-+ Inside the function, set the ring choice in the Enigma machine object to be the ring choice that was passed into the function as a parameter.
++ Inside the function, set the `ring_choice` in the `Enigmamachine object` to be the `ring_choice` that was passed into the function as a parameter.
 
-+ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` as the second value returned, so that three values in total are returned from the function.
++ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` as the **second** value returned, so that three values in total are returned from the function.
 
 + In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
-+ Create a cluster object on the OctaPi network, like this. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
++ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
 
 ```python
 cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
@@ -75,7 +75,7 @@ jobs = []
 id = 1    
 ```
 
-+  Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop we used in the standalone brute force attack.
++  Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop you used in the standalone brute force attack.
 
 ```python
 # Submit the jobs for this ring choice
@@ -132,9 +132,11 @@ Here is an example of the code running using arguments passed from the command l
 title: Answer
 ---
 
-You sometimes find multiple valid machine settings for the same rotor selections but with different ring settings and rotor start positions. For example you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact there are multiple valid machine settings because the rotor slip ring creates multiple equivalent crypt solutions. This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions creating a discontinuity every 26, 26x26 and 26x26x26 characters; meaning that an attacker would have to keep starting again. With our Raspberry Pi based crypt attack using a simple brute force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to reach a valid solution.
+You sometimes find multiple valid machine settings for the same rotor selections but with different ring settings and rotor start positions. For example, you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact, there are multiple valid machine settings because the rotor slip ring creates multiple equivalent crypt solutions.
 
-Here's an example (compare with the screenshot above).
+This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions, creating a discontinuity every 26, 26×26 and 26×26×26 characters, meaning that an attacker would have to keep starting again. With our Raspberry Pi based crypt attack using a simple brute force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to reach a valid solution.
+
+Here's an example (compare with the screenshot above):
 
   ![Running enigma_bf_canonical](images/enigma-canonical-qjg.png)
 
