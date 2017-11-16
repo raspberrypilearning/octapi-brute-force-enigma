@@ -8,9 +8,7 @@ From an electrical point of view, the Enigma machine is simply a battery, a bulb
 
 In the diagram above, we show how a character on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response.
 
-### Plugboard
-
-As if this wasn't enough, a plugboard was added to the original design which allows up to ten pairs of letters to be manually transposed as they go into the rotors and again when they come back out.
+Let's look at the rotors and the reflector first.
 
 ### Rotors and reflector
 
@@ -28,6 +26,12 @@ When using the Enigma machine, three rotors are selected from five available one
 
 It is also possible to slip round the letter assignments on the side of the rotor wheel so that A = B, or A = C, etc. Changing the point at which the rotors advance makes the encryption sequence discontinuous.
 
+### Plugboard
+
+As if this wasn't enough, a plugboard (the left-most green box in the top diagram) was added to the original design which allows up to ten pairs of letters to be manually transposed as they go into the rotors and again when they come back out.
+
+### Encryption settings
+
 Combining three rotors from a set of five, the rotor settings with 26 positions, and the plugboard with ten pairs of letters connected, the Enigma machine used by WWII military had 158962555217826360000 (nearly 159 quintillion) different settings.
 
 The encryption relied on both the sending and receiving Enigma machines being set the same. To do this, a settings sheet was used at both communicating stations. The sheet specified:
@@ -42,10 +46,10 @@ A different set of machine settings was used each day, and the rotor start posit
 
 ![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
 
-This is an Enigma settings sheet captured at the end of WWII which has been released by GCHQ for this project. You can see how the various settings are laid out in the expanded view of one of the lines on the sheet shown below.  
+This is an Enigma settings sheet captured at the end of WWII which has been released by GCHQ for this project. In the expanded view of one of the lines shown below, you can see how the various settings are laid out:
 
 ![A line of settings from a WWII captured Enigma settings sheet](images/Enigma-settings-line.jpg)
 
-The settings we've highlighted are for the first day of the month and show that rotors IV, I, and V should be selected and used in that order. The ring settings follow: rotor IV should be slipped round to position 20 (A = T), rotor I to 5 (A = E) and rotor V to position 10 (A = J). Next the wiring of the plug board should be S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", and "SZK" for each 6-hour period of the day.
+The settings we've highlighted are for the first day of the month, hence the '1' in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A = T), rotor I to 5 (A = E) and rotor V to position 10 (A = J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
 
 There were two reflectors used, B or C. These have fixed transpositions of letters, which ensure that the current returns back through the machine without it reversing the transposition on the return leg. We will assume reflector B has been used.
