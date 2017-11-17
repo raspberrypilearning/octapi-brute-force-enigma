@@ -2,7 +2,7 @@
 
 Enigma is a cipher machine that was created in the early 20th century for commercial, diplomatic, and military applications. The machine was adopted by the German military during World War II for secret communications. The Enigma encryption code was famously broken at Bletchley Park, the forerunner of GCHQ, during WWII, meaning intercepted radio messages from the German military could be decoded and read. This spectacular achievement is thought to have shortened the war, saving many lives on both sides of the conflict.
 
-From an electrical point of view, the Enigma machine is simply a battery, a bulb, and a switch circuit. It doesn't have any electronics, so it is an electro-mechanical device. Encryption is achieved by varying the path of an electric current through the wiring of the machine.
+From an electrical point of view, the Enigma machine is simply a battery, 26 lightbulbs, and a switch circuit. It doesn't have any electronics, so it is an electro-mechanical device. Encryption is achieved by varying the path of an electric current through the wiring of the machine.
 
 ![Encoding a W as G on Enigma](images/Enigma-wiring.gif)
 
@@ -20,11 +20,11 @@ In the photo above, you can see the jumble of wiring inside an expanded rotor wh
 
 ### Selecting rotors
 
-When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). So that a different transposition is used character by character, the first rotor advances as each letter of the message is typed. As a result, the user can type in 'LL' and both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
+When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). So that a different transposition is used character by character, the first rotor advances as each letter of the message is typed. As a result, the user can type in 'LL' and both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine starts advancing the next rotor position by position, and so on.
 
 ### Rotor start positions
 
-However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing. So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
+However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 at the beginning and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters by default. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing. So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
 
 ### Slip rings
 
