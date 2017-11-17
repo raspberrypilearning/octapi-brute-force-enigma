@@ -22,6 +22,8 @@ In the photo above, you can see the jumble of wiring inside an expanded rotor wh
 
 When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). So that a different transposition is used character by character, the first rotor advances as each letter of the message is typed. As a result, the user can type in 'LL' and both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
 
+### Rotor start positions
+
 However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing. So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
 
 ### Slip rings
@@ -42,9 +44,9 @@ The encryption relied on both the sending and receiving Enigma machines being se
 - Which letters should be changed by the plugboard
 - Which rotor start positions should be used
 
-### Rotor start position and one-off key
+### Settings and one-off key
 
-A different set of machine settings was used each day, and the rotor start position was changed every six hours, so the machine setting was very time-sensitive.
+A different set of machine settings was used each day, and the rotor start positions were even changed every six hours, so the machine setting was very time-sensitive.
 
 ![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
 
@@ -52,7 +54,7 @@ This is an Enigma settings sheet captured at the end of WWII which has been rele
 
 ![A line of settings from a WWII captured Enigma settings sheet](images/Enigma-settings-line.jpg)
 
-The settings we've highlighted are for the first day of the month, hence the "1" in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A = T), rotor I to position 5 (A = E), and rotor V to position 10 (A = J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
+The settings we've highlighted are for the first day of the month, hence the "1" in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A → T), rotor I to position 5 (A → E), and rotor V to position 10 (A → J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
 
 On top of that, there were two reflectors, B or C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
 
