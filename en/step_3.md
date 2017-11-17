@@ -16,7 +16,7 @@ Inside the machine, a number of rotors with 26 contacts (one for each letter fro
 
 ![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
 
-In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. The reflector has fixed transpositions of letters, ensuring that the current returns back through the machine without it reversing the transposition on the return leg.
+In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. The reflector's transposition setting is fixed, ensuring that the current returns back through the machine without reversing the transposition.
 
 ### Selecting rotors
 
