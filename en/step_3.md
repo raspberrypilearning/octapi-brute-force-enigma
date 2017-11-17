@@ -48,15 +48,15 @@ The encryption relied on both the sending and receiving Enigma machines being se
 
 ### Settings and one-off key
 
-A different set of machine settings was used each day, and the rotor start positions were even changed every six hours, so the machine setting was very time-sensitive.
+A different set of machine settings was used each day, and the rotor start positions were even changed every six hours, so the machine setting was very time-sensitive. To make sure users knew which settings to use at which point in time, the military handed out secret settings sheets.
 
 ![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
 
-This is an Enigma settings sheet captured at the end of WWII which has been released by GCHQ for this project. In the expanded view of one of the lines shown below, you can see how the various settings are laid out:
+This is an Enigma settings sheet captured at the end of WWII, which GCHQ has released for this project. In the expanded view of one of the lines shown below, you can see how the various settings are laid out:
 
 ![A line of settings from a WWII captured Enigma settings sheet](images/Enigma-settings-line.jpg)
 
-+ The settings we've highlighted are for the first day of the month, hence the "1" in the second column
++ The settings we've zoomed in on are for the first day of the month, hence the "1" in the second column
 + The next column shows that rotors IV, I, and V should be selected and used in that order
 + The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20, rotor I to position 5, and rotor V to position 10
 + Next comes the plugboard wiring: S to X, K to U, Q to F, and so on
