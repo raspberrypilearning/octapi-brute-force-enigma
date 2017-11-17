@@ -16,15 +16,15 @@ Inside the machine, a number of rotors with 26 contacts (one for each letter fro
 
 ![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
 
-In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, many transpositions per letter can be achieved. The reflector's transposition setting is fixed, ensuring that the current returns back through the machine without reversing the transposition.
+In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, each letter is transposed many times. The reflector's transposition setting is fixed, ensuring that the current returns back through the machine without reversing the transposition.
 
 ### Selecting rotors
 
-When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). The bottom-most rotor advances as the message is typed, so that a different transposition of letters is used character by character. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
+When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). The bottom-most rotor advances as each letter of the message is typed, so that a different transposition is used character by character. For instance, when the user types in 'LL', both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
 
 ### Slip rings
 
-It is also possible to slip round the letter assignments on the side of the rotor wheel so that A = B, or A = C, etc. Changing the point at which the rotors advance makes the encryption sequence discontinuous.
+Each rotor has a slip ring, which is used to set its initial position, e.g. to start at position 10, and advance 26 steps from there. Changing the point from which the rotors advance makes the encryption sequence discontinuous.
 
 ### Plugboard
 
@@ -50,6 +50,6 @@ This is an Enigma settings sheet captured at the end of WWII which has been rele
 
 ![A line of settings from a WWII captured Enigma settings sheet](images/Enigma-settings-line.jpg)
 
-The settings we've highlighted are for the first day of the month, hence the '1' in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A = T), rotor I to 5 (A = E) and rotor V to position 10 (A = J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
+The settings we've highlighted are for the first day of the month, hence the '1' in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20, rotor I to position 5, and rotor V to position 10. Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
 
 On top of that, there were two reflectors, B or C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
