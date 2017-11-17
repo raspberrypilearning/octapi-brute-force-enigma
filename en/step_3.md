@@ -24,7 +24,9 @@ When using the Enigma machine, three rotors are selected from five available one
 
 ### Rotor start positions
 
-However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 at the beginning and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters by default. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing. So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
+However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 at the beginning and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters by default. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing.
+
+So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
 
 ### Slip rings
 
@@ -54,7 +56,11 @@ This is an Enigma settings sheet captured at the end of WWII which has been rele
 
 ![A line of settings from a WWII captured Enigma settings sheet](images/Enigma-settings-line.jpg)
 
-The settings we've highlighted are for the first day of the month, hence the "1" in the second column. The next column shows that rotors IV, I, and V should be selected and used in that order. The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20 (A → T), rotor I to position 5 (A → E), and rotor V to position 10 (A → J). Next comes the plugboard wiring: S to X, K to U, Q to F, and so on. Finally, the start position for the rotors should be "SRC", "EEJ, "FNZ", or "SZK" for each 6-hour period of the day.
++ The settings we've highlighted are for the first day of the month, hence the "1" in the second column
++ The next column shows that rotors IV, I, and V should be selected and used in that order
++ The fourth column holds the slip ring settings: rotor IV should be slipped round to position 20, rotor I to position 5, and rotor V to position 10
++ Next comes the plugboard wiring: S to X, K to U, Q to F, and so on
++ Finally, the rotor start position for the four six-hour period of the day are "SRC", "EEJ, "FNZ", and "SZK"
 
 On top of that, there were two reflectors, B or C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
 
