@@ -28,7 +28,7 @@ It is also possible to slip round the letter assignments on the side of the roto
 
 ### Plugboard
 
-As if this wasn't enough, a plugboard (the leftmost green box in the diagram at the top) was added to the original design which allows up to ten pairs of letters to be manually transposed as they go into the rotors and again when they come back out.
+As if this wasn't enough, the German version of the Enigma machine also featured a plugboard (the leftmost green box in the diagram at the top), which can be manually adjusted so that up to ten pairs of letters are transposed as they go into the rotors and again when they come back out.
 
 ### Encryption settings
 
