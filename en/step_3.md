@@ -12,7 +12,7 @@ Let's look at the rotors and the reflector first.
 
 ### Rotors and reflector
 
-Inside the machine, a number of rotors with 26 contacts (one for each letter from A to Z) are stacked together to create the current path through the heart of the machine. Each rotor wheel has electrical contacts on both sides and a jumble of wiring between them, so that the letters are transposed from one side to the other.
+Inside the machine, a number of rotors with 26 contacts (one for each letter from A to Z) are stacked together to create the current path through the heart of the machine. Each rotor wheel has 26 electrical contacts on both outer sides and a jumble of wiring inside, so that the letters are transposed from one side to the other. In practice this means that a specific rotor transposes A into E, B into K, C into M, and so on.
 
 ![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
 
@@ -20,7 +20,7 @@ In the photo above, you can see the jumble of wiring inside an expanded rotor wh
 
 ### Selecting rotors
 
-When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). The bottom-most rotor advances as each letter of the message is typed, so that a different transposition is used character by character. For instance, when the user types in 'LL', both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
+When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). So that a different transposition is used character by character, the first rotor advances as each letter of the message is typed. As a result, the user can type in 'LL' and both letters will not be encrypted the same, so the result might be 'XV'. After the first rotor has advanced 26 positions, the machine advances the next rotor by one, and so on.
 
 However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters. Moreover, set to this position the rotor can only move 16 steps before the next rotor starts advancing. So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
 
