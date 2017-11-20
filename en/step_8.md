@@ -11,11 +11,11 @@ title: Install `Py-enigma` on the OctaPi client and servers
 
 + Boot up the client and connect it to the internet. This will mean disconnecting from your OctaPi router and connecting to your WiFi network for internet access.
 
-+ Open a terminal window.
++ Open the terminal.
 
 ![Open a terminal](images/terminal.png)
 
-+ Type the following command into the terminal:
++ Type the following command into the terminal window:
 
 ```bash
 sudo pip3 install py-enigma
@@ -33,9 +33,9 @@ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 
 + Press `Ctrl` + `o` to save, and `Ctrl` + `x` to exit the text editor.
 
-Next, repeat the follwoing process for each of the servers.
+Next, repeat the following process for each of the servers.
 
-+ Select one server, then connect a keyboard, screen, and mouse to it so that you can administer it directly from a terminal window. Alternatively, place the SD card from each server in turn into a Raspberry Pi with connected peripherals.
++ Select one server, then connect a keyboard, screen, and mouse to it so that you can administer it directly from a terminal window. Alternatively, place the SD card into a Raspberry Pi with connected peripherals.
 
 + Repeat all the steps needed to install `Py-enigma` that you followed for the client.
 
@@ -59,15 +59,15 @@ The demand on the OctaPi client machine for memory will be quite large, so we wi
 import dispy
 ```
 
-+ Alter the `find_rotor_start()` function so that it now takes an additional parameter — the `ring_choice`. This will be a **string** containing thre numbers separated by spaces, for example '1 1 1'.
++ Alter the `find_rotor_start()` function so that it now takes an additional parameter — the `ring_choice`. This will be a **string** containing three numbers separated by spaces, for example '1 1 1'.
 
 + Inside the function, set the `ring_choice` in the `Enigmamachine object` to be the `ring_choice` that was passed into the function as a parameter.
 
-+ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to additionally return the `ring_choice` as the **second** value returned, so that three values in total are returned from the function.
++ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to return the `ring_choice` as the **second** value returned, so that in total three values are returned by the function.
 
-+ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
++ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text, and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
-+ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the code to reflect this.
++ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes=` part of the code to reflect this.
 
 ```python
 cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
@@ -75,7 +75,7 @@ jobs = []
 id = 1    
 ```
 
-+  Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop you used in the standalone brute force attack.
++ Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop you used in the standalone brute-force attack.
 
 ```python
 # Submit the jobs for this ring choice
@@ -86,7 +86,7 @@ for rotor_choice in rotors:
     id += 1   # Next job
 ```
 
-+ Next we need to wait for the jobs to complete before collecting the results returned from the cluster.
++ Next we need to wait for the jobs to complete before collecting the results returned by the cluster.
 
 ```python
 print( "Waiting..." )
@@ -94,7 +94,7 @@ cluster.wait()
 print( "Collecting job results" )
 ```
 
-+ The last step is to sift through the results to see if any of the `find_rotor_start()` jobs didn't return the string `"Cannot find settings"`, in which case the returned string must have been a valid rotor start position.
++ The last step is to sift through the results to see if any of the `find_rotor_start()` jobs did not return the string `"Cannot find settings"`, in which case the returned string must have been a valid rotor start position.
 
 ```python
 # Collect and check through the jobs for this ring setting
@@ -132,9 +132,9 @@ Here is an example of the code running using arguments passed from the command l
 title: Answer
 ---
 
-You sometimes find multiple valid machine settings for the same rotor selections but with different ring settings and rotor start positions. For example, you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact, there are multiple valid machine settings because the rotor slip ring creates multiple equivalent crypt solutions.
+For the same rotor selections, you sometimes find multiple valid machine settings with different ring settings and rotor start positions. For example, you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact, there are multiple valid machine settings because moving the rotor's slip ring creates multiple equivalent crypt solutions.
 
-This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions, creating a discontinuity every 26, 26×26 and 26×26×26 characters, meaning that an attacker would have to keep starting again. With our Raspberry Pi based crypt attack using a simple brute force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to reach a valid solution.
+This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions, creating a discontinuity every 26, 26×26 and 26×26×26 characters, meaning that an attacker would have to keep starting again. With our Raspberry Pi–based crypt attack using a simple brute-force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to find a valid solution.
 
 Here's an example (compare with the screenshot above):
 
