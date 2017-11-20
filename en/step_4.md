@@ -16,11 +16,11 @@ Let's write some code using `Py-enigma` to simulate using an Enigma machine to d
 from enigma.machine import EnigmaMachine
 ```
 
-Consult your Enigma settings sheet to find out that the machine that encrypted the message had the following settings at the time the message was sent:
+Consulting your Enigma settings sheet, you find out that the encrypting machine had the following settings at the time it sent the message:
 
 ![Decrypt settings](images/decrypt-settings.png)
 
-+ In your Python file, set up an Enigma machine object. Use the same settings as on your settings sheet. Each setting should be a string and should be typed exactly as it appears on the settings sheet. For example, the rotors would be set as `'II V III'`.
++ In your Python file, set up an `EnigmaMachine` object using the settings from your settings sheet. Each setting should be a **string** and should be typed exactly as it appears on the settings sheet. For example, the `rotors` will be set as `'II V III'`.
 
 ```python
 # Set up the Enigma machine
@@ -31,16 +31,16 @@ machine = EnigmaMachine.from_key_sheet(
    plugboard_settings='')
 ```
 
-+ Add some code to set the initial position of the Enigma machine rotors to `U`, `Y`, and `T` to match the sending machine.
++ Add some code to set the initial positions of the rotors to `U`, `Y`, and `T` to match the sending machine.
 
 ```python
 # Set the initial position of the Enigma rotors
 machine.set_display('UYT')
 ```
 
-The other operator sent you "PWE" as the key for this message. The key was encrypted before sending to prevent an eavesdropper from being able to read it.
+The other operator sent you "PWE" as the key for this message. Before sending, the key was encrypted to prevent an eavesdropper from being able to read it.
 
-You first need to use your Enigma machine to recover the **actual** message key by decrypting "PWE" using the settings sheet's rotor start position: `U`, `Y`, and `T`.
+You first need to use your Enigma machine to recover the **actual** message key by decrypting "PWE" using the settings sheet's rotor start positions: `U`, `Y`, and `T`.
 
 + Add the following code to decrypt the key, and run your program to display the decrypted key:
 
@@ -90,6 +90,6 @@ print(plaintext)
 ---
 title: What is the decrypted message?
 ---
-If all is well, you should see the script exit without any errors, and the decrypted message "THISXISXWORKING".
+If all is well, you should see the script exiting without any errors, and the decrypted message "THISXISXWORKING".
 
 --- /collapse ---
