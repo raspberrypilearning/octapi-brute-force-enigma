@@ -160,7 +160,7 @@ We did not code the rotors' slip ring settings. The slip ring shifts the wiring 
 ---
 title: Answer
 ---
-Let's assume we have an Enigma machine with three rotors, where each rotor can have 26 slip ring positions: A to A (no shift), A to B (shift by 1), ..., A to Z (shift by 26). This means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
+Each Enigma machine rotor can have 26 slip ring positions: A to A (no shift), A to B (shift by 1), ..., A to Z (shift by 26). In an Enigma machine with three rotors, this means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
 
 This is a very long time, but we could break up the problem into many parts and run these in parallel using OctaPi. This is what we will do next.
 
