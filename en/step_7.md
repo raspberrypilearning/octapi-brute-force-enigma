@@ -1,27 +1,27 @@
 ## Standalone crypt attack
 
-During WWII, cryptographers at Bletchley Park were working hard to try to break the Enigma cipher by hand. In this next section, we will develop a brute force crypt attack on the Enigma cipher text using a Raspberry Pi.
+During WWII, cryptographers at Bletchley Park were working hard to try to break the Enigma cipher by hand to decrypt intercepted German cyphers. In this next section, we will develop a brute-force crypt attack on the Enigma cipher text using a Raspberry Pi.
 
-A brute force attack is simply an exhaustive search over all possible machine settings to try and find which one was used. For the time being, we will ignore the plugboard setting (and assume that is known).
+A brute-force attack is simply an exhaustive search over all possible machine settings to try and find which one was used. For the time being, we will assume we know the plugboard settings.
 
 Here is the message that was intercepted:
 
 ![Intercepted message](images/intercepted-message.png)
 
-We will use a crib text with our cipher text, which is a guess at what the cipher text might be. This may seem like a cheat, but is actually exploiting a weakness of the Enigma system as used during WWII. Some of the text in messages was predictable, especially at the start. For example, weather report messages were a good source of cribs, as they often contained the word "WETTER", the German word for "weather".
+We will use a crib text with our cipher text, which is a guess at what the cipher text might be. This may seem like a cheat, but is actually exploiting a weakness of the Enigma system as used during WWII: some of message text was predictable, especially its beginning. For example, weather report messages were a good source of cribs, as they often contained the word "WETTER", the German word for "weather".
 
-We will use this crib to help us launch the brute force attack:
+We will use this `cribtext` to help us launch the brute-force attack:
 
 ```python
 ciphertext = "YJPYITREDSYUPIU"
 cribtext = "THISXISXWORKING"
 ```
 
-We will know if the attack has found the correct rotor choices and starting positions if the cipher text decrypts to the crib text.
+We will know that the attack has found the correct rotor choices and starting positions when the cipher text is decrypted to the crib text.
 
 + Create a new Python file and save it as `bruteforce_standalone.py`.
 
-+ Add the strings containing the cipher text and the crib text to your file.
++ Add the variables containing the cipher text and the crib text as strings to your file.
 
 We need to represent the selection of three out of five rotor wheels in our Python code. We could write code to generate the possibilities, but as there aren't very many, we can manually define them.
 
@@ -49,7 +49,7 @@ Our strategy will be to select each set of rotor choices in turn from the above 
 
 However, it is not as simple as just testing every single possible choice of rotors. Inside our function, we will also need to search through all possible rotor start positions for the specified rotor combination.
 
-For the time being we will assume the ring settings "1 1 1" and the plugboard settings "AV BS CG DL FU HZ IN KM OW RX" — we will discuss adding these later. The code breakers at Bletchley Park would not have had this luxury!
+For the time being we will assume the slip ring settings "1 1 1" and the plugboard settings "AV BS CG DL FU HZ IN KM OW RX" — we'll discuss adding these later. The code breakers at Bletchley Park would not have had this luxury!
 
 + Create a function called `find_rotor_start()` which takes three arguments: the rotor choice, the cipher text, and the crib text.
 
@@ -61,9 +61,9 @@ For the time being we will assume the ring settings "1 1 1" and the plugboard se
 from enigma.machine import EnigmaMachine
 ```
 
-We have imported the `Py-Enigma` module inside our function for a reason: this allows us to reuse this code later on with an OctaPi cluster, so that we can run the search massively in parallel in much shorter time than we can on a single processor. For the time being, we will run our code on a single Raspberry Pi.
+We have imported the `Py-Enigma` module inside our function for a reason: this allows us to reuse this code later on with an OctaPi cluster, where we can run the script massively in parallel, and thus in much shorter time, than we can on a single processor. For the time being, we will run our code on a single Raspberry Pi.
 
-+ Write some code inside the function to test all possible rotor start positions for the given rotor choice. Remember that we are passing a rotor choice into the function, so you only need to test all start positions for the **specified** rotor choice, not for every possible rotor choice!
++ Write code inside the function to test all possible rotor start positions for the given rotor choice. Remember that we are passing a rotor choice into the function, so you only need to test all start positions for the **specified** rotor choice, not for every possible rotor choice!
 
 --- hints ---
 --- hint ---
@@ -73,7 +73,7 @@ We have imported the `Py-Enigma` module inside our function for a reason: this a
 
 + Set up your `EnigmaMachine` object just as we did before. Use reflector B and the ring and plugboard settings we used earlier.
 
-+ Loop through the alphabet to generate all possible start positions for each rotor. For example, if all rotors begin on A, the first start position to test might be AAA. The second might be AAB, then AAC, and so on, until rotor 3 reaches the end of the alphabet. Increment rotor 2 and reset rotor 3 to A, resulting in ABA, ABB, ABC, etc.
++ Loop through the alphabet to generate all possible start positions for each rotor. For example, if all rotors begin on A, the first start position to test might be AAA. The second might be AAB, then AAC, and so on, until rotor 3 reaches the end of the alphabet. Then move rotor 2 on one position, reset rotor 3, and begin incrementing it again, resulting in ABA, then ABB, ABC, etc.
 
 + For each rotor start position, decrypt the given cipher text and check whether it is the same as the crib text, printing the resulting `plaintext` as you go along. If the cypher and crib texts are indeed the same, return the rotor choice and the start position.
 --- /hint ---
@@ -117,9 +117,9 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
 --- /hint ---
 --- /hints ---
 
-Most of the time our function will fail to match the cipher and crib text because the rotor choice will be wrong. On one occasion (we hope!) the cipher and crib texts will match because we have found the right machine setting.
+Most of the time our function will fail to match the cipher and crib texts, because the rotor choice will be wrong. On one occasion (we hope!) the cipher and crib texts will match because we have found the right machine setting.
 
-+ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results. If ever a start position is returned that is not "Cannot find settings", break out of the loop — the settings have been found!
++ In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results. If ever a start position is returned that is not "Cannot find settings", break out of the loop — the right settings have been found!
 
 --- hints ---
 --- hint ---
@@ -138,9 +138,9 @@ for rotor_setting in rotors:
 --- /hint ---
 --- /hints ---
 
-+ Save and run your program. It will take quite a long time to run, but you should be able to see the results for each rotor choice as it executes.
++ Save and run your program. It will take quite a long time to run, but as it executes, you should see the results for each rotor choice.
 
-+ Once the rotor choice and start position have been found, use the `decrypt.py` program you wrote earlier to decrypt the hidden message, using the rotor choice and start positions found with your brute force attack.
++ Once the rotor choice and start position have been found, use the `decrypt.py` program you wrote earlier to decrypt the hidden message with the rotor choice and start positions found in your brute-force attack.
 
 --- collapse ---
 ---
@@ -152,7 +152,7 @@ The secret message reads `"THISXISXWORKINGXOCTAPIXISXAWESOME"`
 
 --- /collapse ---
 
-We did not code the rotor slip ring settings. This setting allows the letters on each of the rotors to be shifted round (A to B, A to C, A to D, and so on). To deal with the rotor ring setting, we would need to modify and run the `find_rotor_start()` function repeatedly for every rotor slip ring setting.
+We did not code the rotors' slip ring settings. The slip ring shifts the wiring inside the rotor — slip it round by one and t A connects to where B did before, B connects to where C did before, C connects to where D did before, and so on. To deal with the rotor ring setting, we would need to modify and run the `find_rotor_start()` function repeatedly for every rotor slip ring setting.
 
 **How much longer will it take to run the program if we code for a search over all possible slip ring settings as well?**
 
@@ -160,7 +160,7 @@ We did not code the rotor slip ring settings. This setting allows the letters on
 ---
 title: Answer
 ---
-Let's assume we have an Enigma machine with three rotors, where each rotor can have 26 slip ring positions (A to A (no shift), A to B, ..., A to Z, etc...). This means we would have to run the search for the start position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
+Let's assume we have an Enigma machine with three rotors, where each rotor can have 26 slip ring positions (A to A (no shift), A to B, ..., A to Z, etc...). This means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
 
 This is a very long time, but we could break up the problem into many parts and run these in parallel using OctaPi. This is what we will do next.
 
