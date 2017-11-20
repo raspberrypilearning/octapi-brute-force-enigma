@@ -152,7 +152,7 @@ The secret message reads `"THISXISXWORKINGXOCTAPIXISXAWESOME"`
 
 --- /collapse ---
 
-We did not code the rotors' slip ring settings. The slip ring shifts the wiring inside the rotor — slip it round by one and t A connects to where B did before, B connects to where C did before, C connects to where D did before, and so on. To deal with the rotor ring setting, we would need to modify and run the `find_rotor_start()` function repeatedly for every rotor slip ring setting.
+We did not code the rotors' slip ring settings. The slip ring shifts the wiring inside the rotor — slip it round by one and A connects to where B did before, B connects to where C did before, C connects to where D did before, and so on. To deal with the rotor ring setting, we would need to modify the `find_rotor_start()` function so that it runs repeatedly for every rotor slip ring setting.
 
 **How much longer will it take to run the program if we code for a search over all possible slip ring settings as well?**
 
@@ -160,7 +160,7 @@ We did not code the rotors' slip ring settings. The slip ring shifts the wiring 
 ---
 title: Answer
 ---
-Let's assume we have an Enigma machine with three rotors, where each rotor can have 26 slip ring positions (A to A (no shift), A to B, ..., A to Z, etc...). This means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
+Let's assume we have an Enigma machine with three rotors, where each rotor can have 26 slip ring positions: A to A (no shift), A to B (shift by 1), ..., A to Z (shift by 26). This means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
 
 This is a very long time, but we could break up the problem into many parts and run these in parallel using OctaPi. This is what we will do next.
 
