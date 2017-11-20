@@ -31,6 +31,8 @@ machine = EnigmaMachine.from_key_sheet(
    plugboard_settings='')
 ```
 
+As we said earlier, we'll be using reflector B for all the decryption and encryption jobs in this project.
+
 + Add some code to set the initial positions of the rotors to `U`, `Y`, and `T` to match the sending machine.
 
 ```python
