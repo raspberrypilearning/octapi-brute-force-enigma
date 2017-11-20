@@ -1,6 +1,6 @@
 ## Encrypt a message
 
-Suppose now you need to send a message back using your Enigma machine. You look up today's settings in your settings sheet:
+No you need to use your Enigma machine to create a message to send back. You look up today's settings in your settings sheet:
 
 ![Encrypt settings](images/encrypt-settings.png)
 
@@ -10,7 +10,7 @@ Suppose now you need to send a message back using your Enigma machine. You look 
 
 + Write another line of code to set the rotor start positions to the settings from the sheet.
 
-+ Choose three random letters to use as your message key — as an example we will use "BFR". Encrypt the message key and make a note of the result. This is the encrypted key you will send with your message.
++ Choose three random letters to use as your message key — we will use "BFR", but you can choose whatever you like. Encrypt the message key and make a note of the result. This is the encrypted key you will send with your message.
 
 + Set the rotor start positions to your **unencrypted** message key (in our example, "BFR").
 
@@ -21,7 +21,7 @@ Suppose now you need to send a message back using your Enigma machine. You look 
 Look at the code you wrote to decrypt the message and see what you can reuse.
 --- /hint ---
 --- hint ---
-Here is the blank set up code for the `EnigmaMachine` object:
+Here is the blank set-up code for the `EnigmaMachine` object:
 
 ```python
 # Set up the Enigma machine
@@ -50,10 +50,11 @@ title: Answer
 ---
 They are exactly the same! The code you wrote in this section is identical to the code you wrote to decrypt the message.
 
-If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". You may have chosen a different message key, in which case your result will be different.
 --- /collapse ---
 
-You can also run `pyenigma` from the command line if you wish. Typing this command into a terminal window produces the same result as the program above.
+If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". You may have chosen a different message key, in which case your result will be different.
+
+You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote.
 
 ```bash
 pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start BFR --text "RASPBERRYPI"
@@ -65,7 +66,7 @@ pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start B
 ---
 title: Answer
 ---
-No. In fact this is a weakness of the Enigma system because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
+No. This is in fact a weakness of the Enigma system, because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
 
 --- /collapse ---
 
