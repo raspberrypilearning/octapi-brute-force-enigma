@@ -1,12 +1,8 @@
-## Decrypt a message
+## Encrypt a message
 
-Imagine you are an Enigma operator and you've just received this message:
+Now let's use your Enigma machine to create a message.
 
-![Encrypted message](images/encrypted-message.png)
-
-Let's write some code using `Py-enigma` to simulate using an Enigma machine to decrypt the message.
-
-+ Open IDLE, create a new file, and save it as `decrypt.py`.
++ Open IDLE, create a new file, and save it as `encrypt.py`.
 
 [[[rpi-gui-idle-opening]]]
 
@@ -15,12 +11,11 @@ Let's write some code using `Py-enigma` to simulate using an Enigma machine to d
 ```python
 from enigma.machine import EnigmaMachine
 ```
+Consulting your Enigma settings sheet, you find out that the settings for today are as follows:
 
-Consulting your Enigma settings sheet, you find out that the encrypting machine had the following settings at the time it sent the message:
+![Encrypt settings](images/encrypt-settings.png)
 
-![Decrypt settings](images/decrypt-settings.png)
-
-+ In your Python file, set up an `EnigmaMachine` object using the settings from your settings sheet. Each setting should be a **string** and should be typed exactly as it appears on the settings sheet. For example, the `rotors` will be set as `'II V III'`.
++ In your Python file, set up an `EnigmaMachine` object using the settings from your settings sheet. Each setting should be a **string** and should be typed exactly as it appears on the settings sheet. For example, the `rotors` will be set as `'IV I V'`.
 
 ```python
 # Set up the Enigma machine
@@ -31,67 +26,71 @@ machine = EnigmaMachine.from_key_sheet(
    plugboard_settings='')
 ```
 
-As we said earlier, we'll be using reflector B for all the decryption and encryption jobs in this project.
-
-+ Add some code to set the initial positions of the rotors to `U`, `Y`, and `T` to match the sending machine.
++ Write another line of code to set the rotor start positions to the settings from the sheet.
 
 ```python
 # Set the initial position of the Enigma rotors
-machine.set_display('UYT')
+machine.set_display('FNZ')
 ```
 
-The other operator sent you "PWE" as the key for this message. Before sending, the key was encrypted to prevent an eavesdropper from being able to read it.
-
-You first need to use your Enigma machine to recover the **actual** message key by decrypting "PWE" using the settings sheet's rotor start positions: `U`, `Y`, and `T`.
-
-+ Add the following code to decrypt the key, and run your program to display the decrypted key:
++ Choose three random letters to use as your message key — we will use "BFR", but you can choose whatever you like. Encrypt the message key and make a note of the result. This is the encrypted key you will send with your message.
 
 ```python
-# Decrpyt the text 'PWE' and store it as msg_key
-msg_key = machine.process_text('PWE')
+# Decrypt the text 'BFR' and store it as msg_key
+msg_key = machine.process_text('BFR')
 print(msg_key)
 ```
 
-+ Add some code at the bottom of the program to set the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
++ Write a line of code to reset the rotor start positions to your **unencrypted** message key (in our example, "BFR").
+
++ Write some code to process the `plaintext` "RASPBERRYPI" and display the resulting `ciphertext`.
 
 --- hints ---
 --- hint ---
-Look at how you originally set the rotor positions to `UYT`, and see if you can use this code to set the rotor positions to the new setting.
+Look at the code you wrote to encrypt the message key - the process is exactly the same for encrypting your plaintext.
 --- /hint ---
 --- hint ---
-Here is how your code should look:
+Here is the blank set-up code for the `EnigmaMachine` object:
 
 ```python
-# Set the new start position of the Enigma rotors
-machine.set_display(msg_key)
+# Set up the Enigma machine
+machine = EnigmaMachine.from_key_sheet(
+   rotors='',
+   reflector='B',
+   ring_settings='',
+   plugboard_settings='')
+```
+--- /hint ---
+--- hint ---
+You can set the starting position of the rotors with the `set_display` method. Replace the `???` with your settings.
+
+```python
+machine.set_display('???')
 ```
 --- /hint ---
 --- /hints ---
 
-You are now ready to decrypt the message.
+If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". You may have chosen a different message key, in which case your result will be different.
 
-+ Write some code to decrypt the cipher text.
+You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote.
 
---- hints ---
---- hint ---
-This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text, and then `print` the result.
---- /hint ---
---- hint ---
-Here is how your code should look:
-
-```python
-ciphertext = 'YJPYITREDSYUPIU'
-plaintext = machine.process_text(ciphertext)
-
-print(plaintext)
+```bash
+pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start BFR --text "RASPBERRYPI"
 ```
---- /hint ---
---- /hints ---
+
+**Do any of the characters ever get encrypted as themselves (i.e. does "A" get encrypted as "A", "B" as "B", etc.)?**
 
 --- collapse ---
 ---
-title: What is the decrypted message?
+title: Answer
 ---
-If all is well, you should see the script exiting without any errors, and the decrypted message "THISXISXWORKING".
+No. This is in fact a weakness of the Enigma system, because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
 
 --- /collapse ---
+
+
+### Challenge
+
++ Try encrypting text using different settings from a real Enigma settings sheet to see how the text changes.
+
+![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
