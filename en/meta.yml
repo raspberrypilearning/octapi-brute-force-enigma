@@ -16,8 +16,8 @@ steps:
   - title: What you will need
   - title: What is Enigma, and how does it work?
   - title: Enigma in use during WWII
-  - title: Decrypt a message
   - title: Encrypt a message
+  - title: Decrypt a message
   - title: Standalone crypt attack
   - title: Crypt attack using OctaPi
   - title: "Challenge: find out more"
