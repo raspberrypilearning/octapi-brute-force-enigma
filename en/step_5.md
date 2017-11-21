@@ -50,22 +50,20 @@ print(msg_key)
 Look at the code you wrote to encrypt the message key - the process is exactly the same for encrypting your plaintext.
 --- /hint ---
 --- hint ---
-Here is the blank set-up code for the `EnigmaMachine` object:
+Here is the code you used to encrypt the message key BFR. Can you alter this code to encrypt your plaintext `"RASPBERRYPI"`?
 
 ```python
-# Set up the Enigma machine
-machine = EnigmaMachine.from_key_sheet(
-   rotors='',
-   reflector='B',
-   ring_settings='',
-   plugboard_settings='')
+msg_key = machine.process_text('BFR')
 ```
 --- /hint ---
 --- hint ---
-You can set the starting position of the rotors with the `set_display` method. Replace the `???` with your settings.
+Here is the code you will need:
 
 ```python
-machine.set_display('???')
+plaintext = "RASPBERRYPI"
+ciphertext = machine.process_text(plaintext)
+print(ciphertext)
+
 ```
 --- /hint ---
 --- /hints ---
