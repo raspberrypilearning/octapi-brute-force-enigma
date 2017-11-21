@@ -46,7 +46,7 @@ machine.set_display(msg_key)
 
 You are now ready to decrypt the message.
 
-+ Write some code to decrypt the cipher text.
++ Write some code to decrypt the cipher text `YJPYITREDSYUPIU`.
 
 --- hints ---
 --- hint ---

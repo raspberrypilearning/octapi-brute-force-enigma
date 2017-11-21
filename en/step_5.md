@@ -36,7 +36,7 @@ machine.set_display('FNZ')
 + Choose three random letters to use as your message key — we will use "BFR", but you can choose whatever you like. Encrypt the message key and make a note of the result. This is the encrypted key you will send with your message.
 
 ```python
-# Decrypt the text 'BFR' and store it as msg_key
+# Encrypt the text 'BFR' and store it as msg_key
 msg_key = machine.process_text('BFR')
 print(msg_key)
 ```
