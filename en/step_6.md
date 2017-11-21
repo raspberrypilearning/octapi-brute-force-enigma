@@ -1,50 +1,78 @@
-## Enigma during WWII
+## Encrypt a message
 
-In WWII, Enigma messages were normally sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the military relied heavily on the strength of the encryption technique to keep their messages secret. However, it was possible for the messages to be received in Britain and successfully decrypted at Bletchley Park.
+No you need to use your Enigma machine to create a message to send back. You look up today's settings in your settings sheet:
 
-Let's have a look at how messages were sent so that we can create a message authentically using `Py-Enigma`, and then develop Python code to perform a crypt attack to attempt to read it.
+![Encrypt settings](images/encrypt-settings.png)
 
-A number of different radio procedures were used by the different parts of the German military, but they all worked in a similar way (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma-encrypted transmission.
++ Create a new Python file and save it as `encrypt.py`.
 
-### Step 1: Select the rotors and choose a three-letter message key
-The operator would find the line on the settings sheet that corresponds to the current day of the month. The first thing on the settings sheet is which rotors to use and in what order to use them. The rotor start position for the current six-hour period is at the end of the line. The operator chooses a three-letter message key which should be unique to every message. Obviously, this key could not be sent openly, so it was encrypted for transmission.
++ Inside your file, import the `EnigmaMachine` class, and set up the `machine` with the settings shown on the settings sheet. Like last time, use reflector B.
 
-Example:
-Assume the settings sheet tells us to select rotors II, V and III, and insert them into the machine left to right with the starting positions U, Y, and T. We think of "SCC" as our message key (choosing it at random).
++ Write another line of code to set the rotor start positions to the settings from the sheet.
 
-### Step 2: Encrypt the message key
-When we type "SCC" on the Enigma keyboard with these settings, we obtain "PWE" as the encrypted form of the message key. This key is now safe to send over a radio channel.
++ Choose three random letters to use as your message key — we will use "BFR", but you can choose whatever you like. Encrypt the message key and make a note of the result. This is the encrypted key you will send with your message.
 
-In `Py-Enigma`, we can reproduce this by typing the following into a terminal window:
++ Set the rotor start positions to your **unencrypted** message key (in our example, "BFR").
 
-```bash
-pyenigma.py -r II V III -i 1 1 1 -p AV BS CG DL FU HZ IN KM OW RX -u B --start=UYT --text='SCC'
++ Write some code to process the `plaintext` "RASPBERRYPI" and display the resulting `ciphertext`.
+
+--- hints ---
+--- hint ---
+Look at the code you wrote to decrypt the message and see what you can reuse.
+--- /hint ---
+--- hint ---
+Here is the blank set-up code for the `EnigmaMachine` object:
+
+```python
+# Set up the Enigma machine
+machine = EnigmaMachine.from_key_sheet(
+   rotors='',
+   reflector='B',
+   ring_settings='',
+   plugboard_settings='')
 ```
+--- /hint ---
+--- hint ---
+You can set the starting position of the rotors with the `set_display` method. Replace the `???` with your settings.
 
-For at least part of WWII, the German military procedure was to send and encrypt the message key twice. Using our example, they would have typed "SCCSCC" and obtained "PWEHVF".
+```python
+machine.set_display('???')
+```
+--- /hint ---
+--- /hints ---
 
-**There is a flaw with repeating the message key — what is it?**
+
+**What do you notice about the processes of encrypting and decrypting text?**
 
 --- collapse ---
 ---
 title: Answer
 ---
-We previously observed that no plain text letters get encrypted as themselves. This means that we know that the message key cannot possibly be "P" for the first letter, "W" for the second, or "E" for the third. In addition if the message key is sent twice, we also know it cannot be "H", followed by "V" followed by "F". This reduces the amount of searching required to find the plain text letters, because the first letter is neither "P" or "H", and so on.
+They are exactly the same! The code you wrote in this section is identical to the code you wrote to decrypt the message.
 
 --- /collapse ---
 
-### Step 3: Encrypt the message using the unencrypted message key
-Once the message key was chosen and encrypted, the machine was reset to the unencrypted version of the key and the message was typed into the keyboard. Numbers had to be spelled out in full (because there were no number keys). aA space was often indicated by the letter 'X', because there was no space bar.
+If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". You may have chosen a different message key, in which case your result will be different.
 
-So if we wanted to say "this is working", we would type "THISXISXWORKING".
-
-In `Py-Enigma` on the command line, this looks like:
+You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote.
 
 ```bash
-pyenigma.py -r II V III -i 1 1 1 -p AV BS CG DL FU HZ IN KM OW RX -u B --start='SCC' --text='THISXISXWORKING'
+pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start BFR --text "RASPBERRYPI"
 ```
 
-`YJPYITREDSYUPIU` is the cipher text produced assuming "SCC" is the unencrypted message key.
+**Do any of the characters ever get encrypted as themselves (i.e. does "A" get encrypted as "A", "B" as "B", etc.)?**
 
-### Step 4: Sending the encrypted message and everything needed for secret decryption via radio
-A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations such as "LOL" and "m8" to reduce the amount of typing needed.
+--- collapse ---
+---
+title: Answer
+---
+No. This is in fact a weakness of the Enigma system, because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
+
+--- /collapse ---
+
+
+### Challenge
+
++ Try encrypting text using different settings from a real Enigma settings sheet to see how the text changes.
+
+![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)

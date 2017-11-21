@@ -1,97 +1,34 @@
-## Decrypt a message
+## Enigma during WWII
 
-Imagine you are an Enigma operator and you've just received this message:
+In WWII, Enigma messages were normally sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the military relied heavily on the strength of the encryption technique to keep their messages secret. However, it was possible for the messages to be received in Britain and successfully decrypted at Bletchley Park.
 
-![Encrypted message](images/encrypted-message.png)
+A number of different radio procedures were used by the different parts of the German military, but they all worked in a similar way (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma-encrypted transmission.
 
-Let's write some code using `Py-enigma` to simulate using an Enigma machine to decrypt the message.
+### Step 1: Select the rotors and choose a three-letter message key
+The operator would find the line on the settings sheet that corresponds to the current day of the month. The first thing on the settings sheet is which rotors to use and in what order to use them. The rotor start position for the current six-hour period is at the end of the line. The operator then chooses their own three-letter message key which should be unique to every message. Obviously, this key could not be sent openly, so it was encrypted for transmission.
 
-+ Open IDLE, create a new file, and save it as `decrypt.py`.
+Example:
+Assume the settings sheet tells the operator to select rotors II, V and III, and insert them into the machine left to right with the starting positions U, Y, and T. She thinks of "SCC" as the message key (choosing it at random).
 
-[[[rpi-gui-idle-opening]]]
+### Step 2: Encrypt the message key
+When the operator types "SCC" on the Enigma keyboard with these settings, she obtains "PWE" as the encrypted form of the message key. This key is now safe to send over a radio channel.
 
-+ First, import the `EnigmaMachine` class from `Py-enigma` by adding this code to your file:
+For at least part of WWII, the German military procedure was to send and encrypt the message key twice. Using our example, they would have typed "SCCSCC" and obtained "PWEHVF".
 
-```python
-from enigma.machine import EnigmaMachine
-```
-
-Consulting your Enigma settings sheet, you find out that the encrypting machine had the following settings at the time it sent the message:
-
-![Decrypt settings](images/decrypt-settings.png)
-
-+ In your Python file, set up an `EnigmaMachine` object using the settings from your settings sheet. Each setting should be a **string** and should be typed exactly as it appears on the settings sheet. For example, the `rotors` will be set as `'II V III'`.
-
-```python
-# Set up the Enigma machine
-machine = EnigmaMachine.from_key_sheet(
-   rotors='',
-   reflector='B',
-   ring_settings='',
-   plugboard_settings='')
-```
-
-As we said earlier, we'll be using reflector B for all the decryption and encryption jobs in this project.
-
-+ Add some code to set the initial positions of the rotors to `U`, `Y`, and `T` to match the sending machine.
-
-```python
-# Set the initial position of the Enigma rotors
-machine.set_display('UYT')
-```
-
-The other operator sent you "PWE" as the key for this message. Before sending, the key was encrypted to prevent an eavesdropper from being able to read it.
-
-You first need to use your Enigma machine to recover the **actual** message key by decrypting "PWE" using the settings sheet's rotor start positions: `U`, `Y`, and `T`.
-
-+ Add the following code to decrypt the key, and run your program to display the decrypted key:
-
-```python
-# Decrpyt the text 'PWE' and store it as msg_key
-msg_key = machine.process_text('PWE')
-print(msg_key)
-```
-
-+ Add some code at the bottom of the program to set the Enigma machine's rotor starting positions to the decrypted message key you just obtained.
-
---- hints ---
---- hint ---
-Look at how you originally set the rotor positions to `UYT`, and see if you can use this code to set the rotor positions to the new setting.
---- /hint ---
---- hint ---
-Here is how your code should look:
-
-```python
-# Set the new start position of the Enigma rotors
-machine.set_display(msg_key)
-```
---- /hint ---
---- /hints ---
-
-You are now ready to decrypt the message.
-
-+ Write some code to decrypt the cipher text.
-
---- hints ---
---- hint ---
-This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text, and then `print` the result.
---- /hint ---
---- hint ---
-Here is how your code should look:
-
-```python
-ciphertext = 'YJPYITREDSYUPIU'
-plaintext = machine.process_text(ciphertext)
-
-print(plaintext)
-```
---- /hint ---
---- /hints ---
+**There is a flaw with repeating the message key — what is it?**
 
 --- collapse ---
 ---
-title: What is the decrypted message?
+title: Answer
 ---
-If all is well, you should see the script exiting without any errors, and the decrypted message "THISXISXWORKING".
+We previously observed that no plain text letters get encrypted as themselves. This means that we know that the message key cannot possibly be "P" for the first letter, "W" for the second, or "E" for the third. In addition if the message key is sent twice, we also know it cannot be "H", followed by "V" followed by "F". This reduces the amount of searching required to find the plain text letters, because the first letter is neither "P" or "H", and so on.
 
 --- /collapse ---
+
+### Step 3: Encrypt the message using the unencrypted message key
+Once the message key was chosen and encrypted, the machine was reset to the unencrypted version of the key that the operator chose, and the message was typed into the keyboard. Numbers had to be spelled out in full (because there were no number keys). A space was often indicated by the letter 'X', because there was no space bar.
+
+So if we wanted to say "this is working", we would type "THISXISXWORKING".
+
+### Step 4: Sending the encrypted message via radio
+A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations such as "LOL" and "m8" to reduce the amount of typing needed.

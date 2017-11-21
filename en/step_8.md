@@ -6,7 +6,7 @@ Before you begin, you will need to install `Py-enigma` on your client machine an
 
 --- collapse ---
 ---
-title: Install `Py-enigma` on the OctaPi client and servers
+title: Install py-enigma on the OctaPi client and servers
 ---
 
 + Boot up the client and connect it to the internet. This will mean disconnecting from your OctaPi router and connecting to your WiFi network for internet access.
