@@ -16,4 +16,4 @@ Please note that sometimes things are done for pedagogical reasons so changes wh
 
 ## Derivatives
 
-See [LICENCE.md](LICENCE.md) for content licence. The licence must remain in all derivatives of this work.
+See [LICENSE.md](LICENSE.md) for content licence. The licence must remain in all derivatives of this work.
