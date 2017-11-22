@@ -34,7 +34,7 @@ If the message key is sent twice, as German military used to do, we also know th
 ### Step 3: Encrypt the message using the unencrypted message key
 Once the message key was chosen and encrypted, the operator set the rotors to the unencrypted version of the key that she chose, and typed the message into the keyboard. Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. A space was often indicated by an 'X', because there was no space bar.
 
-So if we wanted to say "this is working", we would type "THISXISXWORKING".
+So if we wanted to say "this message is secret", we would type "THISXMESSAGEXISXSECRET".
 
 ### Step 4: Sending the encrypted message via radio
 A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations to reduce the amount of typing needed.
