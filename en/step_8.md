@@ -6,7 +6,7 @@ Before you begin, you will need to install `Py-enigma` on your client machine an
 
 --- collapse ---
 ---
-title: Install py-enigma on the OctaPi client and servers
+title: Install `py-enigma` on the OctaPi client and servers
 ---
 
 + Boot up the client and connect it to the internet. This will mean disconnecting from your OctaPi router and connecting to your WiFi network for internet access.
@@ -23,13 +23,13 @@ sudo pip3 install py-enigma
 
 + Disconnect the OctaPi client from the internet and connect it to your dedicated OctaPi router again.
 
-+ Type the following command into a terminal window to edit the `wpa_supplicant.conf` file:
++ Type the following command into a terminal window to open the `wpa_supplicant.conf` file:
 
 ```bash
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-+ To avoid the client connecting to the wrong network, remove any entries in `wpa_supplicant` that are for WiFi networks other than OctaPi.
++ To avoid the client connecting to the wrong network, remove any entries in `wpa_supplicant.conf` that are for WiFi networks other than OctaPi.
 
 + Press `Ctrl` + `o` to save, and `Ctrl` + `x` to exit the text editor.
 
@@ -43,7 +43,7 @@ Next, repeat the following process for each of the servers.
 
 --- /collapse ---
 
-To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using `Dispy`, which you installed when you built the OctaPi. The OctaPi code using `Dispy` is very similar to the code we created for a standalone processor.
+To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using Dispy, which you installed when you built the OctaPi. The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
 
 The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time.
 
@@ -51,7 +51,7 @@ The demand on the OctaPi client machine for memory will be quite large, so we wi
 
 + Open the file using Python 3 (IDLE) from the **Programming** menu.
 
-+ Remove everything except the rotor permutations and the code for the function `find_rotor_start()`.
++ Remove everything except the list of rotor permutations and the `find_rotor_start()` function.
 
 + Import `dispy` at the start of your code.
 
@@ -61,13 +61,13 @@ import dispy
 
 + Alter the `find_rotor_start()` function so that it now takes an additional parameter — the `ring_choice`. This will be a **string** containing three numbers separated by spaces, for example '1 1 1'.
 
-+ Inside the function, set the `ring_choice` in the `Enigmamachine object` to be the `ring_choice` that was passed into the function as a parameter.
++ Inside the function, set the `ring_choice` in the `EnigmaMachine` object to be the `ring_choice` that was passed into the function.
 
 + Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to return the `ring_choice` as the **second** value returned, so that in total three values are returned by the function.
 
-+ In the main part of your program (where your loop originally was in the standalone version), add some code to allow the user to input the cipher text, the crib text, and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
++ In the main part of your program (where your loop was in the standalone version), add some code to allow the user to input the cipher text, the crib text, and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
-+ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes=` part of the code to reflect this.
++ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes='XXX'` part of the code to reflect this.
 
 ```python
 cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
@@ -109,7 +109,7 @@ for job in jobs:
         print( "Rotors %s, ring %s, message key was %s, using crib %s" % (rotor_setting, ring_setting, start_pos, cribtext) )
 ```
 
-+ Lastly, we can tidy up and exit.
++ Lastly, you can tidy up and exit.
 
 ```python
 if found == False:
@@ -132,9 +132,9 @@ Here is an example of the code running using arguments passed from the command l
 title: Answer
 ---
 
-For the same rotor selections, you sometimes find multiple valid machine settings with different ring settings and rotor start positions. For example, you could have found start position "ABC" with "1 1 1" and "ABD" with "1 1 2". This isn't a bug: both machine settings are valid. In fact, there are multiple valid machine settings because moving the rotor's slip ring creates multiple equivalent crypt solutions.
+For the same rotor selections, you sometimes find multiple valid machine settings with different ring settings and rotor start positions. For example, you could have found start positions "ABC" with ring settings "1 1 1", as well as "ABD" with "1 1 2", as two valid results. This isn't a bug: both machine settings are valid. In fact, there are multiple valid machine settings because moving the rotor's slip ring creates multiple equivalent crypt solutions.
 
-This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was perceived to be from people successfully decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions, creating a discontinuity every 26, 26×26 and 26×26×26 characters, meaning that an attacker would have to keep starting again. With our Raspberry Pi–based crypt attack using a simple brute-force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to find a valid solution.
+This isn't another example of a mistake in the Enigma encryption technique, but shows how the nature of the cyber threat has changed in the 75 years since WWII. Originally, the risk was posed by people decrypting letter by letter. Changing the rotor slip ring meant that the rotors advanced at unexpected positions, creating a discontinuity every 26, 26×26 and 26×26×26 characters, meaning that an attacker would have to keep starting again. With our Raspberry Pi–based crypt attack using a simple brute-force exhaust search over the full range of possible machine settings, we find that the rotor slip ring setting creates multiple valid solutions. So for us, this feature is a weakness because less searching is needed to find a valid solution.
 
 Here's an example (compare with the screenshot above):
 
@@ -150,6 +150,6 @@ We could have saved a lot of time coding the slip ring search if we had known th
 ---
 title: Answer
 ---
-If you run your code multiple time with fewer and fewer crib and cipher text characters, you should find that as few as four characters of crib text is enough to obtain the correct machine setting (as well as a handful of incorrect solutions). With fewer than four characters, there is so much ambiguity that you will have trouble finding the correct solution amongst all the incorrect solutions.
+If you run your code multiple times with fewer and fewer crib and cipher text characters, you should find that as few as four characters of crib text is enough to obtain the correct machine setting (as well as a handful of incorrect solutions). With fewer than four characters, there is so much ambiguity that you will have trouble finding the correct solution amongst all the incorrect solutions.
 
 --- /collapse ---
