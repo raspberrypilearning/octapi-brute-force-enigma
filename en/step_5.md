@@ -1,6 +1,6 @@
 ## Encrypt a message
 
-Now let's use your Enigma machine to create a message.
+Now let's use your Python-powered Enigma machine to create a secret message!
 
 + Open IDLE, create a new file, and save it as `encrypt.py`.
 
@@ -26,6 +26,8 @@ machine = EnigmaMachine.from_key_sheet(
    plugboard_settings='')
 ```
 
+As we said, we'll be using reflector B for all of our programs.
+
 + Write another line of code to set the rotor start positions to the settings from the sheet.
 
 ```python
@@ -47,10 +49,7 @@ print(msg_key)
 
 --- hints ---
 --- hint ---
-Look at the code you wrote to encrypt the message key - the process is exactly the same for encrypting your plaintext.
---- /hint ---
---- hint ---
-Here is the code you used to encrypt the message key BFR. Can you alter this code to encrypt your plaintext `"RASPBERRYPI"`?
+Here is the code you used to encrypt the message key "BFR". Can you alter this code to encrypt your plaintext `"RASPBERRYPI"`?
 
 ```python
 msg_key = machine.process_text('BFR')
@@ -68,7 +67,7 @@ print(ciphertext)
 --- /hint ---
 --- /hints ---
 
-If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". You may have chosen a different message key, in which case your result will be different.
+If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". If you've chosen a different message key, your result will be different.
 
 You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote.
 
@@ -82,7 +81,7 @@ pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start B
 ---
 title: Answer
 ---
-No. This is in fact a weakness of the Enigma system, because an attacker can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
+No. This is in fact a weakness of the Enigma system, because, as we said, an attacker who wants to break a code can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
 
 --- /collapse ---
 
