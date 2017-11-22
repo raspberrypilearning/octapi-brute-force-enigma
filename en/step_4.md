@@ -9,13 +9,10 @@ An Enigma-encrypted transmission would have looked similar to this:
 How did operators at communications stations go about encrypting?
 
 ### Step 1: Select the rotors and choose a three-letter message key
-The operator would find the line on the settings sheet that corresponds to the current day of the month. The first thing on the settings sheet is which rotors to use and in what order to use them. The rotor start position for the current six-hour period is at the end of the line. The operator then chooses a one-off three-letter message key, which should be unique to every message. Obviously, this key could not be sent openly, so it was encrypted for transmission.
+First, the operator found the line on the settings sheet that corresponds to the current day of the month. This told her how to set the Enigma machine, including which rotors to select and in what order to put them, as well as the rotor start position for the current six-hour period.
 
-Example:
-Assume the settings sheet tells the operator to select rotors II, V and III, and insert them into the machine left to right with the starting positions U, Y, and T. She thinks of "SCC" as the message key, choosing the letters at random.
-
-### Step 2: Encrypt the message key
-When the operator types "SCC" on the Enigma keyboard with these settings, she obtains "PWE" as the encrypted form of the message key. This key is now safe to send over a radio channel.
+### Step 2: Choose and encrypt a three-letter message key
+The operator then picked a one-off three-letter message key, which should be random and unique to every single message. Let's say she thought of "SCC" as the key. Obviously, this key could not be sent openly. To encrypt it for transmission, the operator typed "SCC" into the Enigma machine she had set according to the sheet, and obtained (for example) "PWE" as the encrypted key. This key was then safe to send over a radio channel.
 
 For at least part of WWII, the German military procedure was to send and encrypt the message key twice. Using our example, the operator would have typed "SCCSCC" and obtained "PWEHVF".
 
@@ -32,7 +29,7 @@ If the message key is sent twice, as German military used to do, we also know th
 --- /collapse ---
 
 ### Step 3: Encrypt the message using the unencrypted message key
-Once the message key was chosen and encrypted, the operator set the rotors to the unencrypted version of the key that she chose, and typed the message into the keyboard. Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. A space was often indicated by an 'X', because there was no space bar.
+Once the message key was chosen and encrypted, the operator set the rotors to the unencrypted version of the key that she had chosen, and typed the message into the keyboard. Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. A space was often indicated by an 'X', because there was no space bar.
 
 So if we wanted to say "this message is secret", we would type "THISXMESSAGEXISXSECRET".
 
