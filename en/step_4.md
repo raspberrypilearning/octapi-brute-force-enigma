@@ -1,6 +1,6 @@
 ## Enigma during WWII
 
-In WWII, Enigma messages were normally sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the military relied heavily on the strength of the encryption technique to keep their messages secret. However, it was possible for the messages to be received in Britain and successfully decrypted at Bletchley Park.
+In WWII, Enigma messages were normally sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the military relied heavily on the strength of the encryption technique to keep their messages secret. However, Britain intercepted and successfully decrypted the messages at Bletchley Park.
 
 A number of different radio procedures were used by the different parts of the German military, but they all worked in a similar way (we assume the machines have been set the same from the machine setting sheet). This is what we would have received if we were intercepting an Enigma-encrypted transmission.
 
@@ -31,4 +31,4 @@ Once the message key was chosen and encrypted, the machine was reset to the unen
 So if we wanted to say "this is working", we would type "THISXISXWORKING".
 
 ### Step 4: Sending the encrypted message via radio
-A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations such as "LOL" and "m8" to reduce the amount of typing needed.
+A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations to reduce the amount of typing needed.
