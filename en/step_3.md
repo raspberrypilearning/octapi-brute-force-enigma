@@ -8,7 +8,7 @@ From an electrical point of view, the Enigma machine is simply a battery, 26 lig
 
 In the diagram above, you can see how a letter typed on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain-text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response. Due to the way transposition is achieved, a typed-in letter is never encrypted as itself (e.g. typing in A will never illuminate the lightbulb for A).
 
-The diagram might give you the impression that the letter transposition is complicated but fixed. This is not true though — how letters are transposed changes with every letter that is typed into the Enigma machine. That's what made the Enigma code so hard to break. The transposition changes because, as each letter is typed in, the path of the current changes as it flows to the bulbs. How does this work?
+The diagram might give you the impression that the letter transposition, while very complicated, is unchanging. This is not true though — how letters are transposed changes with every letter that is typed into the Enigma machine. That's what made the Enigma code so hard to break! The transposition changes because, as each letter is typed in, the path of the current changes as it flows to the bulbs. How does this work?
 
 ### Rotors and reflector
 
