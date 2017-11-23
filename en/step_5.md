@@ -69,25 +69,25 @@ print(ciphertext)
 
 If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". If you've chosen a different message key, your result will be different.
 
-You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote.
+You can also run `pyenigma` from the command line if you wish. If you type this command into a terminal window, it will produce the same result as the script you just wrote:
 
 ```bash
 pyenigma.py -r IV I V -i 20 5 10 -p SX KU QP VN JG TC LA WM OB ZF -u B --start BFR --text "RASPBERRYPI"
 ```
 
-**Do any of the characters ever get encrypted as themselves (i.e. does "A" get encrypted as "A", "B" as "B", etc.)?**
+**Do any of the characters ever get encrypted as themselves (i.e. does A get encrypted as A, B as B, etc.)?**
 
 --- collapse ---
 ---
 title: Answer
 ---
-No. This is in fact a weakness of the Enigma system, because, as we said, an attacker who wants to break a code can eliminate all possible crypt attack solutions where an "A" is decrypted as an "A", and so on.
+No. This is in fact a weakness of the Enigma system, because, as we said, an attacker who wants to break a code can eliminate all possible crypt attack solutions where an A is decrypted as an A, and so on.
 
 --- /collapse ---
 
 
 ### Challenge
 
-+ Try encrypting text using different settings from a real Enigma settings sheet to see how the text changes.
++ Encrypt the text using different settings from this authentic Enigma settings sheet, and see how the result changes.
 
 ![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
