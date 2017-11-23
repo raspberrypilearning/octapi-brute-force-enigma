@@ -45,7 +45,7 @@ Next, repeat the following process for each of the servers.
 
 To do an exhaustive search of all rotor slip ring settings, we will need to run a lot of jobs on OctaPi using Dispy, which you installed when you built the OctaPi. The OctaPi code using Dispy is very similar to the code we created for a standalone processor.
 
-The demand on the OctaPi client machine for memory will be quite large, so we will need to run the program one ring setting at a time.
+The demand on the OctaPi client machine's memory will be quite high, so we will need to run the program one ring setting at a time.
 
 + Start with the code you wrote for the standalone attack, but save a copy of the file as `bruteforce_octapi.py`.
 
@@ -53,21 +53,21 @@ The demand on the OctaPi client machine for memory will be quite large, so we wi
 
 + Remove everything except the list of rotor permutations and the `find_rotor_start()` function.
 
-+ Import `dispy` at the start of your code.
++ Import `dispy` at the top of the file.
 
 ```python
 import dispy
 ```
 
-+ Alter the `find_rotor_start()` function so that it now takes an additional parameter — the `ring_choice`. This will be a **string** containing three numbers separated by spaces, for example '1 1 1'.
++ Alter the `find_rotor_start()` function so that it now takes an additional parameter: the `ring_choice`. This will be a **string** containing three numbers separated by spaces, for example `'1 1 1'`.
 
 + Inside the function, set the `ring_choice` in the `EnigmaMachine` object to be the `ring_choice` that was passed into the function.
 
-+ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to return the `ring_choice` as the **second** value returned, so that in total three values are returned by the function.
++ Find the two places where a value is returned from the function (when a match has been found, or when all possibilities are exhausted and no match was found). In addition to returning the rotor choice and start position, add code to return the `ring_choice` as the **second** value returned, so that the function returns three values in total.
 
 + In the main part of your program (where your loop was in the standalone version), add some code to allow the user to input the cipher text, the crib text, and the ring setting. You could either do this via the `input()` function or by collecting the arguments from the command line with the `argparse` module.
 
-+ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes='XXX'` part of the code to reflect this.
++ Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes` part of the code to reflect this.
 
 ```python
 cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
@@ -86,7 +86,7 @@ for rotor_choice in rotors:
     id += 1   # Next job
 ```
 
-+ Next we need to wait for the jobs to complete before collecting the results returned by the cluster.
++ Next we need to wait for the jobs to complete before collecting the results the cluster has returned.
 
 ```python
 print( "Waiting..." )
@@ -119,9 +119,9 @@ cluster.print_status()
 cluster.close()
 ```
 
-+ Save and run your code from a terminal using the ciphertext 'FKFPQZYVON' with the crib 'CHELTENHAM' and ring settings '1 1 1'. The program should take around 30 seconds to complete.
++ Save and run your code from a terminal using the ciphertext `'FKFPQZYVON'` with the crib `'CHELTENHAM'` and ring settings `'1 1 1'`. The program should take around 30 seconds to complete.
 
-Here is an example of the code running using arguments passed from the command line:
+Here is an example of the program running with arguments passed from the command line:
 
 ![Running enigma_bf_canonical](images/enigma-canonical-qjf.png)
 
