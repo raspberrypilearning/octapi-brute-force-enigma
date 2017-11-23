@@ -6,9 +6,9 @@ From an electrical point of view, the Enigma machine is simply a battery, 26 lig
 
 ![Encoding a W as G on Enigma](images/Enigma-wiring.gif)
 
-In the diagram above, you can see how a character typed on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain-text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response. Due to the way transposition is achieved, a typed-in letter is never encrypted as itself (e.g. typing in A will never illuminate the lightbulb for A).
+In the diagram above, you can see how a letter typed on the keyboard goes through many stages of transposition before being routed to a lightbulb on the lamp board representing the encrypted letter. The user types their plain-text message on the keyboard character by character, and reads the cipher text as each bulb is illuminated on the lamp board in response. Due to the way transposition is achieved, a typed-in letter is never encrypted as itself (e.g. typing in A will never illuminate the lightbulb for A).
 
-Changing transposition of letters happens because, as each letter is typed in, the path of the current changes as it flows to the bulbs — how does this work?
+The diagram might give you the impression that the letter transposition is complicated but fixed. This is not true though — how letters are transposed changes with every letter that is typed into the Enigma machine. That's what made the Enigma code so hard to break. The transposition changes because, as each letter is typed in, the path of the current changes as it flows to the bulbs. How does this work?
 
 ### Rotors and reflector
 
@@ -16,19 +16,19 @@ Inside the machine, a number of rotors with 26 contacts (one for each letter fro
 
 ![Close-up view of rotor from a WWII captured Enigma machine](images/7X5A0921-closeup.png)
 
-In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, each letter is transposed many times. The reflector's transposition setting is fixed, ensuring that the current returns back through the machine without reversing the transposition.
+In the photo above, you can see the jumble of wiring inside an expanded rotor wheel from a WWII-captured Enigma machine. By stacking several rotors and using a reflector at the end to return the current back through the rotors, each letter is transposed many times. When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). The reflector's transposition setting is fixed, ensuring that the current returns back through the machine without reversing the transposition.
 
-So how is the path of the current changed?
+So how is the path of the current flowing through these components changed?
 
 ### Movement of the rotors
 
-When using the Enigma machine, three rotors are selected from five available ones (there were also machines with four rotors). So that a different transposition is used character by character, the first rotor rotates as each letter of the message is typed, creating a new path for the current. As a result, the user can type in 'LL' and both letters will be encrypted differently, so the result might be 'XV'. After the first rotor has moved 26 positions, the machine starts advancing the next rotor position by position, and so on.
+So that a different transposition is used character by character, the first rotor advances step-wise as each letter of the message is typed, creating a new path for the current each time. As a result, the user can type in 'LL' and both letters will be encrypted differently, so the result might be 'XV'. After the first rotor has moved 26 positions (one full revolution), the machine starts advancing the next rotor position by position, and so on.
 
 ### Rotor start positions
 
-However, part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 at the beginning and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters by default. Note that the rotor will advance 26 steps no matter what its start position is.
+Part of what makes the Enigma encryption difficult to break is the fact that each rotor can be used at a different starting position. For example, if a rotor is set to position 10 at the beginning and the letter A is typed into the machine, it will enter not where A enters by default, but where J (letter 10 in the alphabet) enters by default. Note that a rotor will advance 26 steps no matter what its start position is.
 
-So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; a 3-rotor start position of "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
+So that it can be set more easily, the rotor is marked by an alphabet ring. Hence a start position of 10 would be achieved by setting the rotor so that the letter J is visible; the 3-rotor start position "JFM" would mean setting the first rotor to J, the second to F, and the third to M.
 
 ### Slip rings
 
@@ -36,19 +36,19 @@ On top of that, the letter assignments can be shifted by slipping round ring on 
 
 ### Plugboard
 
-As if this wasn't enough, the German version of the Enigma machine also featured a plugboard (the leftmost green box in the diagram at the top), which can be manually adjusted so that up to ten pairs of letters are transposed as they go into the rotors and again when they come back out.
+As if this wasn't enough, the German version of the Enigma machine also features a plugboard (the leftmost green box in the diagram at the top), which can be manually adjusted so that up to ten pairs of letters are transposed as they go into the rotors and again when they come back out.
 
 ### Encryption settings
 
 Combining three rotors from a set of five, the rotor settings with 26 positions, and the plugboard with ten pairs of letters connected, the Enigma machine used by WWII military had 158962555217826360000 (nearly 159 quintillion) different settings.
 
 The encryption relied on both the sending and receiving Enigma machines being set the same. To do this, secret identical settings sheets were used at both the sending and receiving communicating stations. The sheets specified:
-- Which rotors (of those available) should be selected, and in what order they should be inserted into the machine
+- Which rotors should be selected, and in what order they should be inserted into the machine
 - How much each rotor should be slipped round
 - Which letters should be changed by the plugboard
 - Which rotor start positions should be used
 
-A different set of machine settings was used each day, and the rotor start positions were even changed every six hours, so the machine setting was very time-sensitive. This is also why the settings sheets the military handed out were so carefully guarded.
+Different machine settings was used each day, and the rotor start positions were even changed every six hours, so the machine setting was highly time-sensitive. This is also why the settings sheets the military handed out were so carefully guarded.
 
 ![A captured Enigma settings sheet held by GCHQ](images/Enigma-settings-sheet.jpg)
 
@@ -64,7 +64,7 @@ This is an Enigma settings sheet captured at the end of WWII, which GCHQ has rel
 + Next comes the plugboard wiring: S to X, K to U, Q to F, and so on
 + Finally, the rotor start position for the four six-hour period of the day are "SRC", "EEJ, "FNZ", and "SZK"
 
-On top of that, there were two reflectors, B or C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
+On top of that, there were two reflectors, B and C, one of which was chosen for use. For the encryption and decryption programs here, we will assume use of reflector B.
 
 ### One-off key
 
