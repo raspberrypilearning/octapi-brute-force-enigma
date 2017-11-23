@@ -20,7 +20,7 @@ The other operator sent you "PWE" as the key for this message. Before sending, t
 
 You first need to use your Enigma machine to recover the **actual** message key by decrypting "PWE" using the settings sheet's rotor start positions: `U`, `Y`, and `T`.
 
-+ Add the following code to decrypt the key, and run your program to display the decrypted key:
++ Add the following code to decrypt the key, and run your program to display result:
 
 ```python
 # Decrypt the text 'PWE' and store it as msg_key
