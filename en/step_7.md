@@ -13,6 +13,7 @@ In addition to our cipher text, we will use a crib text, which is a guess at wha
 We will use this `cribtext` to help us launch the brute-force attack:
 
 ```python
+ciphertext = "YJPYITREDSYUPIU"
 cribtext = "THISXISXWORKING"
 ```
 
@@ -140,7 +141,7 @@ for rotor_setting in rotors:
 
 + Save and run your program. It will take quite a long time to run, but as it executes, you should see the results for each rotor choice.
 
-+ Once the rotor choice and start position have been found, use the `decrypt.py` program you wrote earlier to decrypt the hidden message with the rotor choice and start positions found in your brute-force attack.
++ Once your brute-force attack has found the rotors and start position, plug them into the `decrypt.py` program you wrote earlier and decrypt the full secret message!
 
 --- collapse ---
 ---
@@ -162,6 +163,6 @@ title: Answer
 ---
 Each Enigma machine rotor can have 26 slip ring positions: A to A (no shift), A to B (shift by 1), ..., A to Z (shift by 26). In an Enigma machine with three rotors, this means we would have to run the search for the slip ring position 26 times for the first rotor, and all of that 26 times for the second rotor, and all of that 26 times for the third rotor. So our brute-force crypt attack program will take `26 × 26 × 26 = 17576` times longer.
 
-This is a very long time, but we can break up the problem into many parts and run these in parallel using OctaPi. This is what we will do next.
+This is a very long time, but we can break up the problem into many parts and run these in parallel using OctaPi. This is what we will do next!
 
 --- /collapse ---
