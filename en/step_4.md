@@ -34,4 +34,4 @@ Once the message key was chosen and encrypted, the operator set the rotors to th
 Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. There was also no space bar, so a space was often indicated by an 'X'. For example, if we wanted to encrypt "this message is secret", we would type in "THISXMESSAGEXISXSECRET".
 
 ### Step 4: Send the encrypted message via radio
-A radio operator would then send the message in Morse code, using call signs and abbreviated text, just as we use abbreviations in text messages to reduce the amount of typing needed.
+A radio operator would then send the encrypted key and message in Morse code, using call signs and abbreviated text, just as we use abbreviations in text messages to reduce the amount of typing needed.
