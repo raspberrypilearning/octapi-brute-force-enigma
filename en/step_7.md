@@ -13,7 +13,6 @@ In addition to our cipher text, we will use a crib text, which is a guess at wha
 We will use this `cribtext` to help us launch the brute-force attack:
 
 ```python
-ciphertext = "YJPYITREDSYUPIU"
 cribtext = "THISXISXWORKING"
 ```
 
