@@ -1,6 +1,6 @@
 ## Enigma during WWII
 
-In WWII, Enigma-encrypted messages were usually sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the military relied heavily on the strength of the encryption technique to keep their messages secret. However, Britain intercepted and successfully decrypted the messages at Bletchley Park.
+In WWII, Enigma-encrypted messages were usually sent in Morse code via shortwave radio. This means they could easily be intercepted some distance away, so the German military relied heavily on the strength of the encryption technique to keep their messages secret. However, Britain intercepted and successfully decrypted the messages at Bletchley Park.
 
 An Enigma-encrypted transmission would have looked similar to this:
 
@@ -24,14 +24,14 @@ title: Answer
 ---
 We previously said that no plain-text letter gets encrypted as itself. This means that anyone who intercepts an Enigma-encoded message knows that none of the letters in the decrypted message key can possibly be the right ones. In our example, intercepting the key "PWE" tells us that "P" is **not** the first letter, "W" is **not** the second, and "E" is **not** the third.
 
-If the message key is sent twice, as German military used to do, we also know the first letter cannot be "H", the second can't be "V", and the third can't be "F". This reduces the amount of searching we need to do to find the plain-text letters, because we can already exclude two options for each letter in the key.
+If the message key is sent twice, as German military used to do, we also know the first letter cannot be "H", the second can't be "V", and the third can't be "F". This reduces the amount of searching we need to do to find the plain-text letters of the message key, because we can already exclude two options for each letter in the key.
 
 --- /collapse ---
 
 ### Step 3: Encrypt the message using the unencrypted message key
 Once the message key was chosen and encrypted, the operator set the rotors to the unencrypted version of the key that she had chosen, and typed the message into the keyboard.
 
-Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. There was also no space bar, so a space was often indicated by an 'X'. For example, if we wanted to encrypt "this message is secret", we would type "THISXMESSAGEXISXSECRET".
+Numbers had to be spelled out in full, because the Engima machine doesn't have number keys. There was also no space bar, so a space was often indicated by an 'X'. For example, if we wanted to encrypt "this message is secret", we would type in "THISXMESSAGEXISXSECRET".
 
 ### Step 4: Send the encrypted message via radio
-A radio operator would then send the message in Morse code, using a series of callsigns and abbreviated text, just as in modern-day text messages we use abbreviations to reduce the amount of typing needed.
+A radio operator would then send the message in Morse code, using call signs and abbreviated text, just as we use abbreviations in text messages to reduce the amount of typing needed.
