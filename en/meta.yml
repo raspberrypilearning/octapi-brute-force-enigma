@@ -1,23 +1,27 @@
-title: "OctaPi: brute-force Enigma"
+title: OctaPi: brute-force Enigma
 hero_image: images/banner.png
 description: Find out how to launch a brute-force crypt attack on Enigma
-original_url:
+original_url: 
 theme: red # possible values: blue, green, navy, orange, red, turquoise, violet, yellow
-duration: 1 # possible values: 1, 2 or 3
+duration: 1
 listed: true
 ingredient: false
 copyedit: true
-curriculum: creator, design-0, programming-0, phys-comp-0, manufacture-0, community-0
-interests: ""
-technologies: "python"
-site_areas:
-steps:
-  - title: Introduction
-  - title: What you will need
-  - title: What is Enigma, and how does it work?
-  - title: Enigma in use during WWII
-  - title: Encrypt a message
-  - title: Decrypt a message
-  - title: Standalone crypt attack
-  - title: Crypt attack using OctaPi
-  - title: "Challenge: find out more"
+curriculum: 4, design-0, programming-4, phys-comp-0, manufacture-0, community-0
+interests: cybersecurity-and-cryptography
+technologies: python
+site_areas: projects
+hardware: ''
+software: python
+version: 4
+last_tested: 2017-11-01
+steps: 
+- title: Introduction
+- title: What you will need
+- title: What is Enigma, and how does it work?
+- title: Enigma in use during WWII
+- title: Encrypt a message
+- title: Decrypt a message
+- title: Standalone crypt attack
+- title: Crypt attack using OctaPi
+- title: "Challenge: find out more"
