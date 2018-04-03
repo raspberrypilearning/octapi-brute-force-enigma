@@ -1,8 +1,7 @@
-title: OctaPi: brute-force Enigma
+title: "OctaPi: brute-force Enigma"
 hero_image: images/banner.png
 description: Find out how to launch a brute-force crypt attack on Enigma
-original_url: 
-theme: red # possible values: blue, green, navy, orange, red, turquoise, violet, yellow
+theme: red 
 duration: 1
 listed: true
 ingredient: false
