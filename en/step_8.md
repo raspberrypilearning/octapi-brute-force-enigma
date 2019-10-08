@@ -53,10 +53,10 @@ The demand on the OctaPi client machine's memory will be quite high, so we will 
 
 + Remove everything except the list of rotor permutations and the `find_rotor_start()` function.
 
-+ Import `dispy` at the top of the file.
++ Import `dispy` and `socket` at the top of the file.
 
 ```python
-import dispy
+import dispy, socket
 ```
 
 + Alter the `find_rotor_start()` function so that it now takes an additional parameter: the `ring_choice`. This will be a **string** containing three numbers separated by spaces, for example `'1 1 1'`.
@@ -70,9 +70,12 @@ import dispy
 + Create a `cluster` object on the OctaPi network using the code below. If your OctaPi network uses a different IP address range to the default, you will need to alter the `nodes` part of the code to reflect this.
 
 ```python
-cluster = dispy.JobCluster(find_rotor_start, nodes='192.168.1.*')
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80)) # doesn't matter if 8.8.8.8 can't be reached
+cluster = dispy.JobCluster(find_rotor_start, ip_addr=s.getsockname()[0], nodes='192.168.1.*')
+
 jobs = []
-id = 1    
+id = 1
 ```
 
 + Submit the `find_rotor_start()` jobs to the cluster using a similar method to the loop you used in the standalone brute-force attack.
