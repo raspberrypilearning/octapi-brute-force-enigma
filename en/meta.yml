@@ -18,12 +18,14 @@ last_tested: 2017-11-01
 steps:
 - title: Introduction
 - title: What you will need
-  completion: engaged
 - title: What is Enigma, and how does it work?
 - title: Enigma in use during WWII
+  completion:
+  - engaged
 - title: Encrypt a message
 - title: Decrypt a message
 - title: Standalone crypt attack
 - title: Crypt attack using OctaPi
-  completion: internal
+  completion:
+  - internal
 - title: 'Challenge: find out more'
