@@ -29,3 +29,5 @@ steps:
   completion:
   - internal
 - title: 'Challenge: find out more'
+  completion:
+  - external
