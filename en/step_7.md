@@ -67,18 +67,6 @@ We have imported the `Py-Enigma` module **inside** our function for a reason: th
 
 --- hints ---
 --- hint ---
-+ Import the `EnigmaMachine` class.
-
-+ Create a string to store the alphabet so that you can easily loop through the letters.
-
-+ Set up your `EnigmaMachine` object just as we did before. Use reflector B and the slip ring and plugboard settings mentioned above.
-
-+ Loop through the alphabet to generate all possible start positions for each rotor. For example, if all rotors begin on A, the first start position to test might be AAA. The second might be AAB, then AAC, and so on, until rotor 3 reaches the end of the alphabet. Then move rotor 2 on one position, reset rotor 3, and begin incrementing it again, resulting in ABA, then ABB, ABC, etc.
-
-+ For each rotor start position, decrypt the given cipher text and check whether it is the same as the crib text, printing the resulting `plaintext` as you go along. If the cipher and crib texts are indeed the same, return the rotor choice and the start position.
-
---- /hint ---
---- hint ---
 Here is how your code might look:
 
 ```python
@@ -118,14 +106,12 @@ def find_rotor_start( rotor_choice, ciphertext, cribtext ):
 --- /hint ---
 --- /hints ---
 
+
 Most of the time, our function will fail to match the cipher and crib texts, because the rotor choice will be wrong. In one instance (we hope!) the cipher and crib texts will match, because we have found the right machine setting.
 
 + In the main part of your program, write a loop to call the function once for every possible rotor choice combination in the `rotors` list. For each time the function is called, print out the results. If ever a start position is returned that is not "Cannot find settings", break out of the loop — the right settings have been found!
 
 --- hints ---
---- hint ---
-Use a for loop to loop through the list and call the function once for each item in the list.
---- /hint ---
 --- hint ---
 Here is how your code might look:
 
@@ -138,6 +124,7 @@ for rotor_setting in rotors:
 ```
 --- /hint ---
 --- /hints ---
+
 
 + Save and run your program. It will take quite a long time to run, but as it executes, you should see the results for each rotor choice.
 

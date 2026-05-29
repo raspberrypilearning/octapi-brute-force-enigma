@@ -49,13 +49,6 @@ print(msg_key)
 
 --- hints ---
 --- hint ---
-Here is the code you used to encrypt the message key "BFR". Can you alter this code to encrypt your plaintext `"RASPBERRYPI"`?
-
-```python
-msg_key = machine.process_text('BFR')
-```
---- /hint ---
---- hint ---
 Here is the code you will need:
 
 ```python
@@ -66,6 +59,7 @@ print(ciphertext)
 ```
 --- /hint ---
 --- /hints ---
+
 
 If you used the message key "BFR", the resulting ciphertext should be "GON XXLXYFQNZIK". If you've chosen a different message key, your result will be different.
 

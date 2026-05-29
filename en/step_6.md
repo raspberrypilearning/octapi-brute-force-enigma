@@ -32,9 +32,6 @@ print(msg_key)
 
 --- hints ---
 --- hint ---
-Look at how you originally set the rotor positions to `UYT`, and see if you can use this code to set the rotor positions to the new setting.
---- /hint ---
---- hint ---
 Here is how your code should look:
 
 ```python
@@ -44,14 +41,12 @@ machine.set_display(msg_key)
 --- /hint ---
 --- /hints ---
 
+
 You are now ready to decrypt the message.
 
 + Write some code to decrypt the cipher text `YJPYITREDSYUPIU`.
 
 --- hints ---
---- hint ---
-This code will be very similar to the code you used to decrypt the key. Create a **variable** to store the result, use the `machine` to process the cipher text, and then `print` the result.
---- /hint ---
 --- hint ---
 Here is how your code should look:
 
@@ -63,6 +58,7 @@ print(plaintext)
 ```
 --- /hint ---
 --- /hints ---
+
 
 --- collapse ---
 ---
